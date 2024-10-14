@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "electriflux"
+version = "0.1.1"
+description = "Outils de lecture/écriture des flux"
+authors = ["Virgile Daugé <virgile.dauge@pm.me>"]
+license = "GPLv3"
+readme = "README.md"
+homepage = "https://github.com/Energie-De-Nantes/electriflux"
+repository = "https://github.com/Energie-De-Nantes/electriflux"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.2.3"
+lxml = "^5.3.0"
+pyyaml = "^6.0.2"
+pycryptodome = "^3.21.0"
+paramiko = "^3.5.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
