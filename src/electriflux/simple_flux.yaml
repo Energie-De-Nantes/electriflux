@@ -18,6 +18,8 @@ C15:
     Date_Derniere_Modification_FTA: Date_Derniere_Modification_FTA
     
     Evenement_Declencheur: Evenement_Declencheur/Nature_Evenement
+    Type_Evenement: Evenement_Declencheur/Type_Evenement
+    Date_Evenement: Evenement_Declencheur/Date_Evenement
     Ref_Demandeur: Evenement_Declencheur/Ref_Demandeur
     Id_Affaire: Evenement_Declencheur/Id_Affaire
 
