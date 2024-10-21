@@ -136,6 +136,12 @@ def process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None):
 
     date_cols = [col for col in df.columns if col.startswith('Date_')]
     df[date_cols] = df[date_cols].apply(pd.to_datetime, errors='coerce')
+
+    # Conversion automatique des colonnes de type object avec infer_objects()
+    df = df.infer_objects()
+
+    # Application de convert_dtypes pour optimiser les types des colonnes
+    df = df.convert_dtypes()
     return df
 
 def main():
@@ -143,6 +149,7 @@ def main():
     df = process_flux('C15', Path('~/data/flux_enedis_v2/C15').expanduser())
     df.to_csv('C15.csv', index=False)
     print(df)
+    print(df.dtypes)
 if __name__ == "__main__":
     main()
 
