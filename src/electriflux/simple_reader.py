@@ -135,7 +135,8 @@ def process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None):
     df[conso_cols] = df[conso_cols].apply(pd.to_numeric, errors='coerce')
 
     date_cols = [col for col in df.columns if col.startswith('Date_')]
-    df[date_cols] = df[date_cols].apply(pd.to_datetime, errors='coerce')
+    # df[date_cols] = df[date_cols].apply(pd.to_datetime, errors='coerce')
+    df[date_cols] = df[date_cols].apply(lambda x: pd.to_datetime(x, errors='coerce', utc=True).dt.tz_localize(None))
 
     # Conversion automatique des colonnes de type object avec infer_objects()
     df = df.infer_objects()
