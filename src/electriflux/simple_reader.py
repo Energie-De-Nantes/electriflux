@@ -8,6 +8,14 @@ from lxml import etree as ET
 import logging
 
 _logger = logging.getLogger(__name__)
+def get_consumption_names() -> list[str]:
+    """
+    Retourne une liste des noms de consommation utilisés.
+
+    Returns:
+        list[str]: Liste des noms de consommation.
+    """
+    return ['HPH', 'HPB', 'HCH', 'HCB', 'HP', 'HC', 'BASE']
 
 def xml_to_dataframe(xml_path: Path, row_level: str, 
                      metadata_fields: dict[str, str] = {}, 
@@ -123,6 +131,11 @@ def process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None):
         nested_fields,
         file_regex
     )
+    conso_cols = [c for c in get_consumption_names() if c in df]
+    df[conso_cols] = df[conso_cols].apply(pd.to_numeric, errors='coerce')
+
+    date_cols = [col for col in df.columns if col.startswith('Date_')]
+    df[date_cols] = df[date_cols].apply(pd.to_datetime, errors='coerce')
     return df
 
 def main():
