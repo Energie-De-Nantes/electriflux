@@ -48,6 +48,7 @@ F12:
     Id_EV: 'Id_EV'
     Taux_TVA_Applicable: 'Taux_TVA_Applicable'
     Montant_HT: 'Acheminement/Montant_HT'
+    Unite: 'Acheminement/Unite_Quantite'
     Libelle_EV: 'Libelle_EV'
   nested_fields: []
 F15:
