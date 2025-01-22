@@ -9,6 +9,8 @@ C15:
     
     Categorie: Situation_Contractuelle/Titulaire_Contrat/Categorie
     Etat_Contractuel: Situation_Contractuelle/Etat_Contractuel
+    Ref_Situation_Contractuelle: Situation_Contractuelle/Ref_Situation_Contractuelle
+
     Puissance_Souscrite: Situation_Contractuelle/Structure_Tarifaire/Puissance_Souscrite
     Formule_Tarifaire_Acheminement: Situation_Contractuelle/Structure_Tarifaire/Formule_Tarifaire_Acheminement
 
