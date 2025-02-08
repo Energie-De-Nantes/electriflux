@@ -33,6 +33,19 @@ C15:
       child_path: Evenement_Declencheur/Releves/Donnees_Releve/Classe_Temporelle_Distributeur
       id_field: Id_Classe_Temporelle
       value_field: Valeur
+  expected_types:
+    pdl: String
+    Etat_Contractuel: String
+    Date_Evenement: Datetime
+    Puissance_Souscrite: Float64
+    HPH: Int64
+    HPB: Int64
+    HCH: Int64
+    HCB: Int64
+    HP: Int64
+    HC: Int64
+    BASE: Int64
+
 F12:
   file_regex: 'FL_\d+_\d+\.xml$'
   row_level: './/Element_Valorise'
@@ -101,3 +114,13 @@ R151:
       child_path: 'Donnees_Releve/Classe_Temporelle_Distributeur'
       id_field: 'Id_Classe_Temporelle'
       value_field: 'Valeur'
+  expected_types:
+    pdl: String
+    Date_Releve: Datetime
+    HPH: Int64
+    HPB: Int64
+    HCH: Int64
+    HCB: Int64
+    HP: Int64
+    HC: Int64
+    BASE: Int64
