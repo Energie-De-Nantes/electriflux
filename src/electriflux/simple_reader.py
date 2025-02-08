@@ -1,10 +1,11 @@
+#!/usr/bin/env python3
+
 import re
 import yaml
 import pandas as pd
 
 from pathlib import Path
 from lxml import etree as ET
-
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -109,6 +110,40 @@ def load_flux_config(flux_type, config_path='flux_configs.yaml'):
     
     return configs[flux_type]
 
+def enforce_expected_types(df: pd.DataFrame, expected_types: dict[str, str]) -> pd.DataFrame:
+    """
+    Convertit les colonnes du DataFrame en fonction des types attendus.
+
+    Args:
+        df (pd.DataFrame): Le DataFrame à convertir.
+        expected_types (dict[str, str]): Dictionnaire {colonne: type_attendu}.
+
+    Returns:
+        pd.DataFrame: Le DataFrame avec les colonnes converties.
+    """
+
+    type_mapping = {
+        "String": "object",
+        "Float64": "float64",
+        "Int64": "int64",  # Utilisation de 'Int64' pour supporter les NaN
+        "Date": "datetime64[ns]",
+        "DateTime": "datetime64[ns, Europe/Paris]"  # Ajout du fuseau horaire
+    }
+
+    for col, dtype in expected_types.items():
+        if col in df.columns:
+            if dtype == "Date":
+                df[col] = pd.to_datetime(df[col], errors="coerce")      
+            elif dtype == "DateTime":
+                df[col] = (
+                    pd.to_datetime(df[col], errors="coerce", utc=True)
+                    .dt.tz_convert("Europe/Paris")
+                )
+            elif dtype in ["Int64", "Float64"]:
+                df[col] = pd.to_numeric(df[col], errors="coerce", downcast='integer')
+
+    return df
+
 def process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None):
 
     if config_path is None:
@@ -123,6 +158,7 @@ def process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None):
     ]
         # Use a default file_regex if not specified in the config
     file_regex = config.get('file_regex', None)
+    expected_types = config.get('expected_types', {})
     df = process_xml_files(
         xml_dir,
         config['row_level'],
@@ -131,18 +167,8 @@ def process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None):
         nested_fields,
         file_regex
     )
-    conso_cols = [c for c in get_consumption_names() if c in df]
-    df[conso_cols] = df[conso_cols].apply(pd.to_numeric, errors='coerce')
 
-    date_cols = [col for col in df.columns if col.startswith('Date_')]
-    # df[date_cols] = df[date_cols].apply(pd.to_datetime, errors='coerce')
-    df[date_cols] = df[date_cols].apply(lambda x: pd.to_datetime(x, errors='coerce', utc=True).dt.tz_localize(None))
-
-    # Conversion automatique des colonnes de type object avec infer_objects()
-    df = df.infer_objects()
-
-    # Application de convert_dtypes pour optimiser les types des colonnes
-    df = df.convert_dtypes()
+    df = enforce_expected_types(df, expected_types)
     return df
 
 def main():

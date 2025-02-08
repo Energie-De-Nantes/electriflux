@@ -34,9 +34,8 @@ C15:
       id_field: Id_Classe_Temporelle
       value_field: Valeur
   expected_types:
-    pdl: String
-    Etat_Contractuel: String
-    Date_Evenement: Datetime
+    Date_Evenement: DateTime
+    Date_Releve: DateTime
     Puissance_Souscrite: Float64
     HPH: Int64
     HPB: Int64
@@ -115,8 +114,7 @@ R151:
       id_field: 'Id_Classe_Temporelle'
       value_field: 'Valeur'
   expected_types:
-    pdl: String
-    Date_Releve: Datetime
+    Date_Releve: DateTime
     HPH: Int64
     HPB: Int64
     HCH: Int64
