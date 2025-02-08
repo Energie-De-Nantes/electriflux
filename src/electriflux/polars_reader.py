@@ -59,7 +59,7 @@ def enforce_expected_types(df: pl.DataFrame, expected_types: dict[str, str]) -> 
         "Float64": pl.Float64,
         "Int64": pl.Int64,
         "Date": pl.Date,
-        "Datetime": pl.Datetime
+        "DateTime": pl.Datetime
     }
     
     for col, dtype in expected_types.items():
