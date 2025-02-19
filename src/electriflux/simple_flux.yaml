@@ -108,6 +108,7 @@ R151:
     pdl: 'Id_PRM'
     Id_Calendrier_Fournisseur: 'Donnees_Releve/Id_Calendrier_Fournisseur'
     Id_Affaire: 'Donnees_Releve/Id_Affaire'
+    Id_Calendrier_Distributeur: 'Donnees_Releve/Id_Calendrier_Distributeur'
   nested_fields:
     - prefix: ''
       child_path: 'Donnees_Releve/Classe_Temporelle_Distributeur'
