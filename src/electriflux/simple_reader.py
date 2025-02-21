@@ -158,7 +158,7 @@ def process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None):
     ]
         # Use a default file_regex if not specified in the config
     file_regex = config.get('file_regex', None)
-    expected_types = config.get('expected_types', {})
+    
     df = process_xml_files(
         xml_dir,
         config['row_level'],
@@ -167,8 +167,8 @@ def process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None):
         nested_fields,
         file_regex
     )
-
-    df = enforce_expected_types(df, expected_types)
+    #expected_types = config.get('expected_types', {})
+    # df = enforce_expected_types(df, expected_types)
     return df
 
 def main():
