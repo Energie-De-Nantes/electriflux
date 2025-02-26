@@ -26,6 +26,7 @@ C15:
     Id_Affaire: Evenement_Declencheur/Id_Affaire
 
     Date_Releve: Evenement_Declencheur/Releves/Donnees_Releve/Date_Releve
+    Id_Calendrier_Distributeur: Evenement_Declencheur/Releves/Donnees_Releve/Id_Calendrier_Distributeur
     Nature_Index: Evenement_Declencheur/Releves/Donnees_Releve/Nature_Index
 
   nested_fields:
