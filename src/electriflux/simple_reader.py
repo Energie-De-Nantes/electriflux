@@ -21,28 +21,27 @@ def get_consumption_names() -> list[str]:
 def xml_to_dataframe(xml_path: Path, row_level: str, 
                      metadata_fields: dict[str, str] = {}, 
                      data_fields: dict[str, str] = {},
-                     nested_fields: list[tuple[str, str, str, str]] = {}) -> pd.DataFrame:
+                     nested_fields: list[dict] = {}) -> pd.DataFrame:
     """
-    Convert an XML structure to a Pandas DataFrame.
-    
+    Convert an XML structure to a Pandas DataFrame, handling nested structures and multiple conditions.
+
     Parameters:
         xml_path (Path): Path to the XML file.
         row_level (str): XPath-like string that defines the level in the XML where each row should be created.
         metadata_fields (Dict[str, str]): Dictionary of metadata fields with keys as field names and values as XPath-like strings.
         data_fields (Dict[str, str]): Dictionary of data fields with keys as field names and values as XPath-like strings.
-        nested_fields: list[tuple[str, str, str, str]]: List of tuples where each tuple contains the prefix field name, the path of elements to find key field name, and value field name.
+        nested_fields: list[dict]: List of dictionaries that define how to extract nested fields with optional conditions.
+
     Returns:
         pd.DataFrame: DataFrame representation of the XML data.
     """
-    
     tree = ET.parse(xml_path)
     root = tree.getroot()
-    root_tag = root.tag
 
     meta: dict[str, str] = {}
     # Extract metadata fields
     for field_name, field_xpath in metadata_fields.items():
-        field_elem =  root.find(field_xpath)
+        field_elem = root.find(field_xpath)
         if field_elem is not None:
             meta[field_name] = field_elem.text
 
@@ -51,21 +50,29 @@ def xml_to_dataframe(xml_path: Path, row_level: str,
         # Extract data fields
         row_data = {field_name: row.find(field_xpath)
                     for field_name, field_xpath in data_fields.items()}
-
         row_data = {k: v.text if hasattr(v, 'text') else v for k, v in row_data.items()}
-        nested_data = {}
-        for p, r, k, v in nested_fields:
-           for nr in row.findall(r):
-                key_elem = nr.find(k)
-                value_elem = nr.find(v)
-                if key_elem is not None and value_elem is not None:
-                    #_logger.debug(f"Key or value element not found for {r}/{k} or {r}/{v}")
-                    nested_data[p + key_elem.text] = value_elem.text
-                else:
-                    _logger.error(f"Key or value element not found for {r}/{k} or {r}/{v}")   
         
+        # Extract nested fields with multiple conditions
+        nested_data = {}
+        for nested in nested_fields:
+            prefix = nested.get('prefix', '')
+            child_path = nested['child_path']
+            id_field = nested['id_field']
+            value_field = nested['value_field']
+            conditions = nested.get('conditions', [])
+
+            for nr in row.findall(child_path):
+                key_elem = nr.find(id_field)
+                value_elem = nr.find(value_field)
+
+                # Collect all condition results
+                condition_results = [nr.find(cond['xpath']).text == cond['value'] for cond in conditions if nr.find(cond['xpath']) is not None]
+                if all(condition_results):
+                    if key_elem is not None and value_elem is not None:
+                        nested_data[f"{prefix}{key_elem.text}"] = value_elem.text
+
         all_rows.append(row_data | nested_data)
-    
+
     df = pd.DataFrame(all_rows)
     for k, v in meta.items():
         df[k] = v
@@ -110,40 +117,6 @@ def load_flux_config(flux_type, config_path='flux_configs.yaml'):
     
     return configs[flux_type]
 
-def enforce_expected_types(df: pd.DataFrame, expected_types: dict[str, str]) -> pd.DataFrame:
-    """
-    Convertit les colonnes du DataFrame en fonction des types attendus.
-
-    Args:
-        df (pd.DataFrame): Le DataFrame à convertir.
-        expected_types (dict[str, str]): Dictionnaire {colonne: type_attendu}.
-
-    Returns:
-        pd.DataFrame: Le DataFrame avec les colonnes converties.
-    """
-
-    type_mapping = {
-        "String": "object",
-        "Float64": "float64",
-        "Int64": "int64",  # Utilisation de 'Int64' pour supporter les NaN
-        "Date": "datetime64[ns]",
-        "DateTime": "datetime64[ns, Europe/Paris]"  # Ajout du fuseau horaire
-    }
-
-    for col, dtype in expected_types.items():
-        if col in df.columns:
-            if dtype == "Date":
-                df[col] = pd.to_datetime(df[col], errors="coerce")      
-            elif dtype == "DateTime":
-                df[col] = (
-                    pd.to_datetime(df[col], errors="coerce", utc=True)
-                    .dt.tz_convert("Europe/Paris")
-                )
-            elif dtype in ["Int64", "Float64"]:
-                df[col] = pd.to_numeric(df[col], errors="coerce", downcast='integer')
-
-    return df
-
 def process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None):
 
     if config_path is None:
@@ -151,12 +124,8 @@ def process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None):
         config_path = Path(__file__).parent / 'simple_flux.yaml'
     config = load_flux_config(flux_type, config_path)
     
-    # Convert nested_fields from list of dicts to list of tuples
-    nested_fields = [
-        (item['prefix'], item['child_path'], item['id_field'], item['value_field'])
-        for item in config['nested_fields']
-    ]
-        # Use a default file_regex if not specified in the config
+    
+    # Use a default file_regex if not specified in the config
     file_regex = config.get('file_regex', None)
     
     df = process_xml_files(
@@ -164,19 +133,20 @@ def process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None):
         config['row_level'],
         config['metadata_fields'],
         config['data_fields'],
-        nested_fields,
+        config['nested_fields'],
         file_regex
     )
-    #expected_types = config.get('expected_types', {})
-    # df = enforce_expected_types(df, expected_types)
     return df
 
 def main():
 
     df = process_flux('C15', Path('~/data/flux_enedis_v2/C15').expanduser())
     df.to_csv('C15.csv', index=False)
+    # df.to_clipboard()
     print(df)
-    print(df.dtypes)
+    df = process_flux('R151', Path('~/data/flux_enedis_v2/R151').expanduser())
+    df.to_csv('R151.csv', index=False)
+    print(df)
 if __name__ == "__main__":
     main()
 

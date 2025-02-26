@@ -30,21 +30,29 @@ C15:
     Nature_Index: Evenement_Declencheur/Releves/Donnees_Releve/Nature_Index
 
   nested_fields:
-    - prefix: ''
-      child_path: Evenement_Declencheur/Releves/Donnees_Releve/Classe_Temporelle_Distributeur
-      id_field: Id_Classe_Temporelle
-      value_field: Valeur
-  expected_types:
-    Date_Evenement: DateTime
-    Date_Releve: DateTime
-    Puissance_Souscrite: Float64
-    HPH: Int64
-    HPB: Int64
-    HCH: Int64
-    HCB: Int64
-    HP: Int64
-    HC: Int64
-    BASE: Int64
+    - prefix: 'Avant_'
+      child_path: 'Evenement_Declencheur/Releves/Donnees_Releve/Classe_Temporelle_Distributeur'
+      id_field: 'Id_Classe_Temporelle'
+      value_field: 'Valeur'
+      conditions:
+        - xpath: '../Code_Qualification'
+          value: '1'
+        - xpath: 'Classe_Mesure'
+          value: '1'
+        - xpath: 'Sens_Mesure'
+          value: '0'
+
+    - prefix: 'Après_'
+      child_path: 'Evenement_Declencheur/Releves/Donnees_Releve/Classe_Temporelle_Distributeur'
+      id_field: 'Id_Classe_Temporelle'
+      value_field: 'Valeur'
+      conditions:
+        - xpath: '../Code_Qualification'
+          value: '2'
+        - xpath: 'Classe_Mesure'
+          value: '1'
+        - xpath: 'Sens_Mesure'
+          value: '0'
 
 F12:
   file_regex: 'FL_\d+_\d+\.xml$'
@@ -115,12 +123,3 @@ R151:
       child_path: 'Donnees_Releve/Classe_Temporelle_Distributeur'
       id_field: 'Id_Classe_Temporelle'
       value_field: 'Valeur'
-  expected_types:
-    Date_Releve: DateTime
-    HPH: Int64
-    HPB: Int64
-    HCH: Int64
-    HCB: Int64
-    HP: Int64
-    HC: Int64
-    BASE: Int64
