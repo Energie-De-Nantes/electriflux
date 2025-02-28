@@ -70,6 +70,14 @@ def xml_to_dataframe(xml_path: Path, row_level: str,
                 if all(condition_results):
                     if key_elem is not None and value_elem is not None:
                         nested_data[f"{prefix}{key_elem.text}"] = value_elem.text
+                
+                        additional_fields = nested.get('additional_fields', {})
+                        # Extract additional fields.
+                        for add_field_name, add_field_xpath in additional_fields.items():
+                            if f"{prefix}{add_field_name}" not in nested_data: # On évite d'aller cherche plusieurs fois là même info, on prend juste la première
+                                add_elem = nr.find(add_field_xpath)
+                                if add_elem is not None:
+                                    nested_data[f"{prefix}{add_field_name}"] = add_elem.text
 
         all_rows.append(row_data | nested_data)
 

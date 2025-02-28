@@ -26,8 +26,8 @@ C15:
     Id_Affaire: Evenement_Declencheur/Id_Affaire
 
     Date_Releve: Evenement_Declencheur/Releves/Donnees_Releve/Date_Releve
-    Id_Calendrier_Distributeur: Evenement_Declencheur/Releves/Donnees_Releve/Id_Calendrier_Distributeur
-    Nature_Index: Evenement_Declencheur/Releves/Donnees_Releve/Nature_Index
+    # Id_Calendrier_Distributeur: Evenement_Declencheur/Releves/Donnees_Releve/Id_Calendrier_Distributeur
+    # Nature_Index: Evenement_Declencheur/Releves/Donnees_Releve/Nature_Index
 
   nested_fields:
     - prefix: 'Avant_'
@@ -41,6 +41,9 @@ C15:
           value: '1'
         - xpath: 'Sens_Mesure'
           value: '0'
+      additional_fields:
+        Nature_Index: '../Nature_Index'
+        Id_Calendrier_Distributeur: '../Id_Calendrier_Distributeur'
 
     - prefix: 'Après_'
       child_path: 'Evenement_Declencheur/Releves/Donnees_Releve/Classe_Temporelle_Distributeur'
@@ -53,6 +56,9 @@ C15:
           value: '1'
         - xpath: 'Sens_Mesure'
           value: '0'
+      additional_fields:
+        Nature_Index: '../Nature_Index'
+        Id_Calendrier_Distributeur: '../Id_Calendrier_Distributeur'
 
 F12:
   file_regex: 'FL_\d+_\d+\.xml$'
