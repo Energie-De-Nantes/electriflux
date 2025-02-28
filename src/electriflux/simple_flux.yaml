@@ -44,6 +44,7 @@ C15:
       additional_fields:
         Nature_Index: '../Nature_Index'
         Id_Calendrier_Distributeur: '../Id_Calendrier_Distributeur'
+        Id_Calendrier_Fournisseur: '../Id_Calendrier'
 
     - prefix: 'Après_'
       child_path: 'Evenement_Declencheur/Releves/Donnees_Releve/Classe_Temporelle_Distributeur'
@@ -59,6 +60,7 @@ C15:
       additional_fields:
         Nature_Index: '../Nature_Index'
         Id_Calendrier_Distributeur: '../Id_Calendrier_Distributeur'
+        Id_Calendrier_Fournisseur: '../Id_Calendrier'
 
 F12:
   file_regex: 'FL_\d+_\d+\.xml$'
