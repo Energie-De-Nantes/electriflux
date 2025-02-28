@@ -25,7 +25,7 @@ C15:
     Ref_Demandeur: Evenement_Declencheur/Ref_Demandeur
     Id_Affaire: Evenement_Declencheur/Id_Affaire
 
-    Date_Releve: Evenement_Declencheur/Releves/Donnees_Releve/Date_Releve
+    # Date_Releve: Evenement_Declencheur/Releves/Donnees_Releve/Date_Releve
     # Id_Calendrier_Distributeur: Evenement_Declencheur/Releves/Donnees_Releve/Id_Calendrier_Distributeur
     # Nature_Index: Evenement_Declencheur/Releves/Donnees_Releve/Nature_Index
 
@@ -42,6 +42,7 @@ C15:
         - xpath: 'Sens_Mesure'
           value: '0'
       additional_fields:
+        Date_Releve: '../Date_Releve'
         Nature_Index: '../Nature_Index'
         Id_Calendrier_Distributeur: '../Id_Calendrier_Distributeur'
         Id_Calendrier_Fournisseur: '../Id_Calendrier'
@@ -58,6 +59,7 @@ C15:
         - xpath: 'Sens_Mesure'
           value: '0'
       additional_fields:
+        Date_Releve: '../Date_Releve'
         Nature_Index: '../Nature_Index'
         Id_Calendrier_Distributeur: '../Id_Calendrier_Distributeur'
         Id_Calendrier_Fournisseur: '../Id_Calendrier'
