@@ -93,13 +93,16 @@ F15:
     Type_Facturation: '../../Type_Facturation'
     pdl: '../../Donnees_PRM/Id_PRM'
     Id_EV: 'Id_EV'
+    Nature_EV: '../Nature_EV'
     Taux_TVA_Applicable: 'Taux_TVA_Applicable'
     Unite: 'Unite_Quantite'
+    Prix_Unitaire: 'Prix_Unitaire'
     Montant_HT: 'Montant_HT'
-    Date_Debut: 'Date_Debut'
-    Date_Fin: 'Date_Fin'
+    Date_Debut: 'Date_Debut' # BT-73
+    Date_Fin: 'Date_Fin' #BT-74
     Libelle_EV: 'Libelle_EV'
   nested_fields: []
+
 R15:
   row_level: './/PRM'
   metadata_fields:
