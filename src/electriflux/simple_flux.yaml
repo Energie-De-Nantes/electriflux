@@ -97,6 +97,7 @@ F15:
     Taux_TVA_Applicable: 'Taux_TVA_Applicable'
     Unite: 'Unite_Quantite'
     Prix_Unitaire: 'Prix_Unitaire'
+    Quantite: 'Quantite'
     Montant_HT: 'Montant_HT'
     Date_Debut: 'Date_Debut' # BT-73
     Date_Fin: 'Date_Fin' #BT-74
