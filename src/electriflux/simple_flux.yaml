@@ -68,7 +68,7 @@ F12:
   file_regex: 'FL_\d+_\d+\.xml$'
   row_level: './/Element_Valorise'
   metadata_fields:
-    Flux: 'Rappel_En_Tete/Identifiant_Flux'
+    Flux: 'En_Tete_Flux/Identifiant_Flux'
     Num_Facture: 'Rappel_En_Tete/Num_Facture'
     Date_Facture: 'Rappel_En_Tete/Date_Facture'
   data_fields:
@@ -104,7 +104,7 @@ F12:
 F15:
   row_level: './/Element_Valorise'
   metadata_fields:
-    Flux: 'Rappel_En_Tete/Identifiant_Flux'
+    Flux: 'En_Tete_Flux/Identifiant_Flux'
     Num_Facture: 'Rappel_En_Tete/Num_Facture'
     Date_Facture: 'Rappel_En_Tete/Date_Facture'
   data_fields:
