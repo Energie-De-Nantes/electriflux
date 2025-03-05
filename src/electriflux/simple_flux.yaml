@@ -73,16 +73,28 @@ F12:
   data_fields:
     Num_Sous_Lot: '../Num_Sous_Lot'
     Type_Facturation: '../Type_Facturation'
+    Motif_Rectif: '../Motif_Rectif'
+
     pdl: '../Id_PRM'
+    Type_PRM: '../Type_PRM'
     Code_Segmentation_ERDF: '../Code_Segmentation_ERDF'
+    
     Puissance_Ponderee: '../Puissance_Ponderee'
+    Autoproducteur: '../Autoproducteur'
     Tarif_Souscrit: '../Tarif_Souscrit'
-    Num_Depannage: '../Num_Depannage'
+    # Num_Depannage: '../Num_Depannage'
     Id_EV: 'Id_EV'
+    Libelle_EV: 'Libelle_EV'
+    Code_Recapitulatif: 'Code_Recapitulatif'
+
+    CSPE_Applicable: 'CSPE_Applicable'
     Taux_TVA_Applicable: 'Taux_TVA_Applicable'
+    Code_Debit_Credit: 'Code_Debit_Credit'
+
     Montant_HT: 'Acheminement/Montant_HT'
     Unite: 'Acheminement/Unite_Quantite'
-    Libelle_EV: 'Libelle_EV'
+    Quantite: 'Acheminement/Quantite'
+    
   nested_fields: []
 F15:
   row_level: './/Element_Valorise'
