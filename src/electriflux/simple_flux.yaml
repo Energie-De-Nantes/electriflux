@@ -91,9 +91,13 @@ F12:
     Taux_TVA_Applicable: 'Taux_TVA_Applicable'
     Code_Debit_Credit: 'Code_Debit_Credit'
 
-    Montant_HT: 'Acheminement/Montant_HT'
+    Date_Debut: 'Acheminement/Date_Debut'
+    Date_Fin: 'Acheminement/Date_Fin'
+
     Unite: 'Acheminement/Unite_Quantite'
     Quantite: 'Acheminement/Quantite'
+    Prix_Unitaire: 'Acheminement/Prix_Unitaire'
+    Montant_HT: 'Acheminement/Montant_HT'
     
   nested_fields: []
 F15:
