@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "electriflux"
-version = "0.5.5"
+version = "0.5.7"
 description = "Outils de lecture/écriture des flux"
 authors = ["Virgile Daugé <virgile.dauge@pm.me>"]
 license = "GPLv3"
