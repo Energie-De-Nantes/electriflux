@@ -212,8 +212,8 @@ def iterative_process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=No
         config['data_fields'],
         config['nested_fields'],
     )
-    append_to_data(xml_dir / Path(f'{flux_type}.csv'), df)
-    data = append_to_history(xml_dir / Path('history.csv'), xml_files)
+    data = append_to_data(xml_dir / Path(f'{flux_type}.csv'), df)
+    append_to_history(xml_dir / Path('history.csv'), xml_files)
     return data
 
 def main():
