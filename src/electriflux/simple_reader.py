@@ -188,24 +188,23 @@ def load_data(path:Path):
         return pd.DataFrame()
     return pd.read_csv(path)
 
-def append_to_data(path:Path, new_entries: pd.DataFrame):
+def append_to_data(path:Path, new_entries: pd.DataFrame) -> pd.DataFrame:
     old_data = load_data(path)
-    pd.concat([old_data, new_entries], ignore_index=True).to_csv(path, index=False)
+    data = pd.concat([old_data, new_entries], ignore_index=True)
+    data.to_csv(path, index=False)
+    return data
 
-def iterative_process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None):
-    from icecream import ic
+def iterative_process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None)->pd.DataFrame:
     if config_path is None:
         # Build the path to the YAML file relative to the script's location
         config_path = Path(__file__).parent / 'simple_flux.yaml'
     config = load_flux_config(flux_type, config_path)
     file_history: pd.DataFrame = load_history(xml_dir / Path('history.csv'))
-    ic(file_history)
+
     # Use a default file_regex if not specified in the config
     file_regex = config.get('file_regex', None)
     xml_files = find_xml_files(xml_dir, file_regex, set(file_history['file']))
-    # ic(file_history)
-    ic(xml_files)
-    ic(f'Found {len(xml_files)} new files to process')
+
     df = process_xml_files(
         xml_files,
         config['row_level'],
@@ -214,8 +213,8 @@ def iterative_process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=No
         config['nested_fields'],
     )
     append_to_data(xml_dir / Path(f'{flux_type}.csv'), df)
-    append_to_history(xml_dir / Path('history.csv'), xml_files)
-    return df
+    data = append_to_history(xml_dir / Path('history.csv'), xml_files)
+    return data
 
 def main():
 
@@ -223,10 +222,10 @@ def main():
     #df.to_csv('C15.csv', index=False)
     # df.to_clipboard()
     # print(df.columns)
-    df = iterative_process_flux('F15', Path('~/data/flux_enedis_v2/F15').expanduser())
+    iterative_process_flux('F15', Path('~/data/flux_enedis_v2/F15').expanduser())
     # df = process_flux('R151', Path('~/data/flux_enedis_v2/R151').expanduser())
     # df.to_csv('R151.csv', index=False)
-    print(df)
+    # print(df)
 if __name__ == "__main__":
     main()
 
