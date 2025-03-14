@@ -102,6 +102,7 @@ F12:
     
   nested_fields: []
 F15:
+  file_regex: 'FL_\d+_\d+\.xml$'
   row_level: './/Element_Valorise'
   metadata_fields:
     Flux: 'En_Tete_Flux/Identifiant_Flux'
