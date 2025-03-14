@@ -3,10 +3,11 @@
 import re
 import yaml
 import pandas as pd
-
+import datetime
 from pathlib import Path
 from lxml import etree as ET
 import logging
+from typing import Optional
 
 _logger = logging.getLogger(__name__)
 def get_consumption_names() -> list[str]:
@@ -86,23 +87,46 @@ def xml_to_dataframe(xml_path: Path, row_level: str,
         df[k] = v
     return df
 
-def process_xml_files(directory: Path,  
-                      row_level: str, 
-                      metadata_fields: dict[str, str] = {}, 
-                      data_fields: dict[str, str] = {},
-                      nested_fields: list[tuple[str, str, str, str]] = {},
-                      file_pattern: str | None=None) -> pd.DataFrame:
-    all_data = []
-
-    xml_files = [f for f in directory.rglob('*.xml')]
-
+def find_xml_files(
+    directory: Path,
+    file_pattern: Optional[str] = None,
+    exclude_files: Optional[set[str]] = None
+) -> list[Path]:
+    """
+    Filtrer les fichiers XML dans un répertoire selon différents critères.
+    
+    Parameters:
+        directory (Path): Répertoire contenant les fichiers XML.
+        file_pattern (str, optional): Motif regex pour filtrer les fichiers.
+        exclude_files (set[str], optional): Ensemble des chemins de fichiers à exclure.
+        
+    Returns:
+        List[Path]: Liste des fichiers XML filtrés.
+    """
+    # Trouver tous les fichiers XML dans le répertoire et ses sous-répertoires
+    xml_files = list(directory.rglob('*.xml'))
+    
+    # Initialiser les fichiers à exclure si non fournis
+    if exclude_files is not None:
+        # Exclure les fichiers déjà traités
+        xml_files = [f for f in xml_files if f.name not in exclude_files]
+    
+    # Filtrer par motif regex si fourni
     if file_pattern is not None:
         regex_pattern = re.compile(file_pattern)
         xml_files = [f for f in xml_files if regex_pattern.search(f.name)]
     
-    
-    _logger.info(f"Found {len(xml_files)} files matching pattern {file_pattern}")
-    # Use glob to find all XML files matching the pattern in the directory
+    _logger.info(f"Trouvé {len(xml_files)} fichiers XML après filtrage")
+    return xml_files
+
+def process_xml_files(xml_files: list[Path],  
+                      row_level: str, 
+                      metadata_fields: dict[str, str] = {}, 
+                      data_fields: dict[str, str] = {},
+                      nested_fields: list[tuple[str, str, str, str]] = {}) -> pd.DataFrame:
+    all_data = []
+
+    # # Use glob to find all XML files matching the pattern in the directory
     for xml_file in xml_files:
         try:
             df = xml_to_dataframe(xml_file, row_level, metadata_fields, data_fields, nested_fields)
@@ -135,25 +159,73 @@ def process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None):
     
     # Use a default file_regex if not specified in the config
     file_regex = config.get('file_regex', None)
-    
+    xml_files = find_xml_files(xml_dir, file_regex)
     df = process_xml_files(
-        xml_dir,
+        xml_files,
         config['row_level'],
         config['metadata_fields'],
         config['data_fields'],
         config['nested_fields'],
-        file_regex
     )
+    return df
+
+def load_history(path:Path):
+    if not path.exists():
+        return pd.DataFrame(columns=['file', 'processed_at'])
+    return pd.read_csv(path)
+
+def append_to_history(path:Path, new_files:list[Path]):
+    old_history = load_history(path)
+    new_history = pd.DataFrame({
+        'file': [file.name for file in new_files],
+        'processed_at': datetime.datetime.now().isoformat()
+    })
+    pd.concat([old_history, new_history], ignore_index=True).to_csv(path, index=False)
+
+
+def load_data(path:Path):
+    if not path.exists():
+        return pd.DataFrame()
+    return pd.read_csv(path)
+
+def append_to_data(path:Path, new_entries: pd.DataFrame):
+    old_data = load_data(path)
+    pd.concat([old_data, new_entries], ignore_index=True).to_csv(path, index=False)
+
+def iterative_process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None):
+    from icecream import ic
+    if config_path is None:
+        # Build the path to the YAML file relative to the script's location
+        config_path = Path(__file__).parent / 'simple_flux.yaml'
+    config = load_flux_config(flux_type, config_path)
+    file_history: pd.DataFrame = load_history(xml_dir / Path('history.csv'))
+    ic(file_history)
+    # Use a default file_regex if not specified in the config
+    file_regex = config.get('file_regex', None)
+    xml_files = find_xml_files(xml_dir, file_regex, set(file_history['file']))
+    # ic(file_history)
+    ic(xml_files)
+    ic(f'Found {len(xml_files)} new files to process')
+    df = process_xml_files(
+        xml_files,
+        config['row_level'],
+        config['metadata_fields'],
+        config['data_fields'],
+        config['nested_fields'],
+    )
+    append_to_data(xml_dir / Path(f'{flux_type}.csv'), df)
+    append_to_history(xml_dir / Path('history.csv'), xml_files)
     return df
 
 def main():
 
-    df = process_flux('C15', Path('~/data/flux_enedis_v2/C15').expanduser())
-    df.to_csv('C15.csv', index=False)
+    # df = process_flux('F15', Path('~/data/flux_enedis_v2/F15').expanduser())
+    #df.to_csv('C15.csv', index=False)
     # df.to_clipboard()
-    print(df)
-    df = process_flux('R151', Path('~/data/flux_enedis_v2/R151').expanduser())
-    df.to_csv('R151.csv', index=False)
+    # print(df.columns)
+    df = iterative_process_flux('F15', Path('~/data/flux_enedis_v2/F15').expanduser())
+    # df = process_flux('R151', Path('~/data/flux_enedis_v2/R151').expanduser())
+    # df.to_csv('R151.csv', index=False)
     print(df)
 if __name__ == "__main__":
     main()
