@@ -185,14 +185,20 @@ def append_to_history(path:Path, new_files:list[Path]):
 
 def load_data(path:Path):
     if not path.exists():
-        return pd.DataFrame()
-    return pd.read_csv(path)
+        return pd.DataFrame(dtype=str)
+    return pd.read_csv(path, dtype=str)
 
 def append_to_data(path:Path, new_entries: pd.DataFrame) -> pd.DataFrame:
     old_data = load_data(path)
     data = pd.concat([old_data, new_entries], ignore_index=True)
     data.to_csv(path, index=False)
     return data
+
+def reset_flux(flux_type:str, path:Path):
+    if (path/f'{flux_type}.csv').exists():
+        (path/f'{flux_type}.csv').unlink()
+    if (path/'history.csv').exists():
+        (path/'history.csv').unlink()
 
 def iterative_process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=None)->pd.DataFrame:
     if config_path is None:
@@ -217,15 +223,41 @@ def iterative_process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=No
     return data
 
 def main():
-
-    # df = process_flux('F15', Path('~/data/flux_enedis_v2/F15').expanduser())
+    from icecream import ic
+    # reset_flux('F15', Path('~/data/flux_enedis_v2/F15').expanduser())
+    # reset_flux('F12', Path('~/data/flux_enedis_v2/F12').expanduser())
+    # Mesure du temps d'exécution pour F15
+    import time
+    start_time = time.time()
+    f15 = process_flux('F15', Path('~/data/flux_enedis_v2/F15').expanduser())
+    end_time = time.time()
+    ic(f"Temps d'exécution pour F15: {end_time - start_time:.2f} secondes")
+    
+    f12 = process_flux('F12', Path('~/data/flux_enedis_v2/F12').expanduser())
     #df.to_csv('C15.csv', index=False)
     # df.to_clipboard()
     # print(df.columns)
-    iterative_process_flux('F15', Path('~/data/flux_enedis_v2/F15').expanduser())
+    start_time = time.time()
+    i_f15 = iterative_process_flux('F15', Path('~/data/flux_enedis_v2/F15').expanduser())
+    end_time = time.time()
+    ic(f"Temps d'exécution pour iterative F15: {end_time - start_time:.2f} secondes")
+    i_f12 = iterative_process_flux('F12', Path('~/data/flux_enedis_v2/F12').expanduser())
     # df = process_flux('R151', Path('~/data/flux_enedis_v2/R151').expanduser())
     # df.to_csv('R151.csv', index=False)
     # print(df)
+    from pandas.testing import assert_frame_equal
+    start_time = time.time()
+    f15 = f15.sort_values(['pdl', 'Date_Facture']).reset_index(drop=True)
+    i_f15 = i_f15.sort_values(['pdl', 'Date_Facture']).reset_index(drop=True)
+
+    f12 = f12.sort_values(['pdl', 'Date_Facture']).reset_index(drop=True)
+    i_f12 = i_f12.sort_values(['pdl', 'Date_Facture']).reset_index(drop=True)
+    ic(f15)
+    ic(i_f15)
+    assert_frame_equal(f15, i_f15)
+    assert_frame_equal(f12, i_f12)
+    
+    
 if __name__ == "__main__":
     main()
 
