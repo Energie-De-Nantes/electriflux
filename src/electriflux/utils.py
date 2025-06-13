@@ -145,7 +145,7 @@ def download_decrypt_extract_new_files(
 
     try:
         for task_type in tasks:
-            distant = '/flux_enedis/' + str(config[f'FTP_{task_type}_DIR'])
+            distant = '/flux_enedis/' + str(config.get(f'FTP_{task_type}_DIR', task_type))
             local_dir = local.joinpath(task_type)
             local_dir.mkdir(parents=True, exist_ok=True)
 
