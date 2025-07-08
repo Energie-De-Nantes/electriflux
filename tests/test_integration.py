@@ -6,8 +6,7 @@ from pandas.testing import assert_frame_equal
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from electriflux.simple_reader import (
-    process_flux, iterative_process_flux, reset_flux, 
-    convert_flux, convert_flux_iterate, append_data
+    process_flux, iterative_process_flux, reset_flux, append_to_data
 )
 
 
@@ -20,7 +19,7 @@ class TestIntegrationWorkflows:
         shutil.copy(fixtures_path / "c15_xsd_compliant.xml", temp_dir)
         
         # Utiliser la configuration par défaut
-        df = convert_flux('C15', temp_dir)
+        df = process_flux('C15', temp_dir)
         
         # Vérifications complètes
         assert not df.empty
@@ -66,7 +65,7 @@ class TestIntegrationWorkflows:
         # Copier la nouvelle fixture XSD-compliant avec le bon pattern
         shutil.copy(fixtures_path / "f12_xsd_compliant.xml", temp_dir / "FL_001_123.xml")
         
-        df = convert_flux('F12', temp_dir)
+        df = process_flux('F12', temp_dir)
         
         assert not df.empty
         assert len(df) == 5  # 5 éléments valorisés dans la nouvelle fixture
@@ -105,7 +104,7 @@ class TestIntegrationWorkflows:
         # Copier la nouvelle fixture XSD-compliant avec le pattern F15
         shutil.copy(fixtures_path / "f15_xsd_compliant.xml", temp_dir / "F15_001_456.xml")
         
-        df = convert_flux('F15', temp_dir)
+        df = process_flux('F15', temp_dir)
         
         assert not df.empty
         assert len(df) == 4  # 4 éléments valorisés dans la nouvelle fixture
@@ -152,7 +151,7 @@ class TestIntegrationWorkflows:
         r15_dir = temp_dir / "r15"
         r15_dir.mkdir()
         shutil.copy(fixtures_path / "r15_xsd_compliant.xml", r15_dir)
-        df_r15 = convert_flux('R15', r15_dir)
+        df_r15 = process_flux('R15', r15_dir)
         
         # Vérifications R15
         assert len(df_r15) == 3
@@ -176,7 +175,7 @@ class TestIntegrationWorkflows:
         r151_dir = temp_dir / "r151"
         r151_dir.mkdir()
         shutil.copy(fixtures_path / "r151_xsd_compliant.xml", r151_dir / "r151_test.xml")
-        df_r151 = convert_flux('R151', r151_dir)
+        df_r151 = process_flux('R151', r151_dir)
         
         # Vérifications R151
         assert len(df_r151) == 3
@@ -200,7 +199,7 @@ class TestIntegrationWorkflows:
         # Étape 1: Premier fichier
         shutil.copy(fixtures_path / "r15_minimal.xml", temp_dir / "batch1.xml")
         
-        df1 = convert_flux_iterate('R15', temp_dir)
+        df1 = process_flux_iterate('R15', temp_dir)
         assert len(df1) == 3
         assert (temp_dir / "R15.csv").exists()
         assert (temp_dir / "history.csv").exists()
@@ -208,7 +207,7 @@ class TestIntegrationWorkflows:
         # Étape 2: Ajouter un deuxième fichier
         shutil.copy(fixtures_path / "r15_minimal.xml", temp_dir / "batch2.xml")
         
-        df2 = convert_flux_iterate('R15', temp_dir)
+        df2 = process_flux_iterate('R15', temp_dir)
         assert len(df2) == 6  # 3 + 3 lignes
         
         # Vérifier que batch1.xml n'est pas retraité
@@ -217,14 +216,14 @@ class TestIntegrationWorkflows:
         assert set(history['file']) == {'batch1.xml', 'batch2.xml'}
         
         # Étape 3: Relancer sans nouveau fichier
-        df3 = convert_flux_iterate('R15', temp_dir)
+        df3 = process_flux_iterate('R15', temp_dir)
         assert len(df3) == 6  # Pas de nouvelles données
     
     def test_reset_and_reprocess_workflow(self, fixtures_path, temp_dir):
         """Test la réinitialisation et le retraitement."""
         # Traitement initial
         shutil.copy(fixtures_path / "f12_minimal.xml", temp_dir / "FL_001_123.xml")
-        df1 = convert_flux_iterate('F12', temp_dir)
+        df1 = process_flux_iterate('F12', temp_dir)
         assert len(df1) == 3
         
         # Réinitialiser
@@ -233,11 +232,11 @@ class TestIntegrationWorkflows:
         assert not (temp_dir / "history.csv").exists()
         
         # Retraiter
-        df2 = convert_flux_iterate('F12', temp_dir)
+        df2 = process_flux_iterate('F12', temp_dir)
         assert len(df2) == 3
         assert_frame_equal(df1.sort_index(axis=1), df2.sort_index(axis=1))
     
-    def test_append_data_workflow(self, fixtures_path, temp_dir):
+    def test_append_to_data_workflow(self, fixtures_path, temp_dir):
         """Test le workflow d'ajout de données."""
         # Créer des données initiales
         initial_data = pd.DataFrame({
@@ -253,7 +252,7 @@ class TestIntegrationWorkflows:
             'value': ['30', '40']
         })
         
-        result = append_data(data_path, new_data)
+        result = append_to_data(data_path, new_data)
         
         # Vérifier le résultat
         assert len(result) == 4
@@ -279,9 +278,9 @@ class TestIntegrationWorkflows:
         shutil.copy(fixtures_path / "f12_minimal.xml", f12_dir / "FL_001_123.xml")
         
         # Traiter chaque type
-        df_c15 = convert_flux('C15', c15_dir)
-        df_r15 = convert_flux('R15', r15_dir)
-        df_f12 = convert_flux('F12', f12_dir)
+        df_c15 = process_flux('C15', c15_dir)
+        df_r15 = process_flux('R15', r15_dir)
+        df_f12 = process_flux('F12', f12_dir)
         
         # Vérifier que chaque flux est traité correctement
         assert len(df_c15) == 2  # Seulement C15
@@ -301,7 +300,7 @@ class TestIntegrationWorkflows:
         shutil.copy(fixtures_path / "invalid.xml", temp_dir / "invalid.xml")
         
         # Le traitement devrait continuer malgré l'erreur
-        df = convert_flux('R15', temp_dir)
+        df = process_flux('R15', temp_dir)
         
         # Devrait traiter seulement le fichier valide
         assert len(df) == 3
@@ -319,7 +318,7 @@ class TestIntegrationWorkflows:
         # Traiter tous les fichiers
         import time
         start_time = time.time()
-        df = convert_flux('R151', temp_dir)
+        df = process_flux('R151', temp_dir)
         elapsed_time = time.time() - start_time
         
         # Vérifier le résultat
@@ -332,11 +331,3 @@ class TestIntegrationWorkflows:
         assert all(pdl_22['HPH'] == '6000')
 
 
-# Alias pour la compatibilité avec les noms de fonctions
-def test_convert_flux_alias():
-    """Test que convert_flux est un alias de process_flux."""
-    assert convert_flux == process_flux
-
-def test_convert_flux_iterate_alias():
-    """Test que convert_flux_iterate est un alias de iterative_process_flux."""
-    assert convert_flux_iterate == iterative_process_flux
