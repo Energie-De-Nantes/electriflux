@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<R151>
+    <En_Tete_Flux>
+        <Identifiant_Flux>R151</Identifiant_Flux>
+        <Libelle_Flux>Puissances maximales et index des PRM du segment C5 sur abonnement</Libelle_Flux>
+        <Version_XSD>1.2.0</Version_XSD>
+        <Identifiant_Emetteur>ERDF</Identifiant_Emetteur>
+        <Identifiant_Destinataire>FOURN001</Identifiant_Destinataire>
+        <Date_Creation>2024-01-15T10:30:00</Date_Creation>
+        <Identifiant_Contrat>CTR123456789</Identifiant_Contrat>
+        <Numero_Abonnement>ABO987654321</Numero_Abonnement>
+        <Unite_Mesure_Index>kWh</Unite_Mesure_Index>
+        <Unite_Mesure_Puissance>kW</Unite_Mesure_Puissance>
+    </En_Tete_Flux>
+    
+    <PRM>
+        <Id_PRM>12345678901234</Id_PRM>
+        
+        <Donnees_Releve>
+            <Date_Releve>2024-01-15</Date_Releve>
+            <Id_Calendrier_Fournisseur>CAL_FOURN_2024</Id_Calendrier_Fournisseur>
+            <Libelle_Calendrier_Fournisseur>Calendrier Fournisseur 2024</Libelle_Calendrier_Fournisseur>
+            <Id_Calendrier_Distributeur>CAL_DIST_2024</Id_Calendrier_Distributeur>
+            <Libelle_Calendrier_Distributeur>Calendrier Distributeur 2024</Libelle_Calendrier_Distributeur>
+            <Id_Affaire>AFF12345</Id_Affaire>
+            
+            <Classe_Temporelle_Distributeur>
+                <Id_Classe_Temporelle>HP</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Heures Pleines</Libelle_Classe_Temporelle>
+                <Rang_Cadran>1</Rang_Cadran>
+                <Valeur>12500</Valeur>
+                <Indice_Vraisemblance>1</Indice_Vraisemblance>
+            </Classe_Temporelle_Distributeur>
+            
+            <Classe_Temporelle_Distributeur>
+                <Id_Classe_Temporelle>HC</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Heures Creuses</Libelle_Classe_Temporelle>
+                <Rang_Cadran>2</Rang_Cadran>
+                <Valeur>8900</Valeur>
+                <Indice_Vraisemblance>1</Indice_Vraisemblance>
+            </Classe_Temporelle_Distributeur>
+            
+            <Classe_Temporelle>
+                <Id_Classe_Temporelle>HP</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Heures Pleines Fournisseur</Libelle_Classe_Temporelle>
+                <Rang_Cadran>1</Rang_Cadran>
+                <Valeur>12500</Valeur>
+                <Indice_Vraisemblance>1</Indice_Vraisemblance>
+            </Classe_Temporelle>
+            
+            <Classe_Temporelle>
+                <Id_Classe_Temporelle>HC</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Heures Creuses Fournisseur</Libelle_Classe_Temporelle>
+                <Rang_Cadran>2</Rang_Cadran>
+                <Valeur>8900</Valeur>
+                <Indice_Vraisemblance>1</Indice_Vraisemblance>
+            </Classe_Temporelle>
+            
+            <Puissance_Maximale>
+                <Valeur>6800</Valeur>
+            </Puissance_Maximale>
+        </Donnees_Releve>
+    </PRM>
+    
+    <PRM>
+        <Id_PRM>98765432109876</Id_PRM>
+        
+        <Donnees_Releve>
+            <Date_Releve>2024-01-20</Date_Releve>
+            <Id_Calendrier_Fournisseur>CAL_FOURN_2024</Id_Calendrier_Fournisseur>
+            <Libelle_Calendrier_Fournisseur>Calendrier Fournisseur 2024</Libelle_Calendrier_Fournisseur>
+            <Id_Calendrier_Distributeur>CAL_DIST_2024</Id_Calendrier_Distributeur>
+            <Libelle_Calendrier_Distributeur>Calendrier Distributeur 2024</Libelle_Calendrier_Distributeur>
+            <Id_Affaire>AFF67890</Id_Affaire>
+            
+            <Classe_Temporelle_Distributeur>
+                <Id_Classe_Temporelle>BASE</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Base</Libelle_Classe_Temporelle>
+                <Rang_Cadran>1</Rang_Cadran>
+                <Valeur>45000</Valeur>
+                <Indice_Vraisemblance>1</Indice_Vraisemblance>
+            </Classe_Temporelle_Distributeur>
+            
+            <Classe_Temporelle>
+                <Id_Classe_Temporelle>BASE</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Base Fournisseur</Libelle_Classe_Temporelle>
+                <Rang_Cadran>1</Rang_Cadran>
+                <Valeur>45000</Valeur>
+                <Indice_Vraisemblance>1</Indice_Vraisemblance>
+            </Classe_Temporelle>
+            
+            <Puissance_Maximale>
+                <Valeur>12500</Valeur>
+            </Puissance_Maximale>
+        </Donnees_Releve>
+    </PRM>
+    
+    <PRM>
+        <Id_PRM>22222222222222</Id_PRM>
+        
+        <Donnees_Releve>
+            <Date_Releve>2024-01-30</Date_Releve>
+            <Id_Calendrier_Fournisseur>CAL_FOURN_2024</Id_Calendrier_Fournisseur>
+            <Libelle_Calendrier_Fournisseur>Calendrier Fournisseur 2024</Libelle_Calendrier_Fournisseur>
+            <Id_Calendrier_Distributeur>CAL_DIST_2024</Id_Calendrier_Distributeur>
+            <Libelle_Calendrier_Distributeur>Calendrier Distributeur 2024</Libelle_Calendrier_Distributeur>
+            <Id_Affaire>AFF22222</Id_Affaire>
+            
+            <Classe_Temporelle_Distributeur>
+                <Id_Classe_Temporelle>HPH</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Heures Pleines Hiver</Libelle_Classe_Temporelle>
+                <Rang_Cadran>1</Rang_Cadran>
+                <Valeur>6000</Valeur>
+                <Indice_Vraisemblance>1</Indice_Vraisemblance>
+            </Classe_Temporelle_Distributeur>
+            
+            <Classe_Temporelle_Distributeur>
+                <Id_Classe_Temporelle>HCH</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Heures Creuses Hiver</Libelle_Classe_Temporelle>
+                <Rang_Cadran>2</Rang_Cadran>
+                <Valeur>4000</Valeur>
+                <Indice_Vraisemblance>1</Indice_Vraisemblance>
+            </Classe_Temporelle_Distributeur>
+            
+            <Classe_Temporelle_Distributeur>
+                <Id_Classe_Temporelle>HPB</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Heures Pleines Bleu</Libelle_Classe_Temporelle>
+                <Rang_Cadran>3</Rang_Cadran>
+                <Valeur>5500</Valeur>
+                <Indice_Vraisemblance>1</Indice_Vraisemblance>
+            </Classe_Temporelle_Distributeur>
+            
+            <Classe_Temporelle_Distributeur>
+                <Id_Classe_Temporelle>HCB</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Heures Creuses Bleu</Libelle_Classe_Temporelle>
+                <Rang_Cadran>4</Rang_Cadran>
+                <Valeur>3500</Valeur>
+                <Indice_Vraisemblance>1</Indice_Vraisemblance>
+            </Classe_Temporelle_Distributeur>
+            
+            <Classe_Temporelle>
+                <Id_Classe_Temporelle>HPH</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Heures Pleines Hiver Fournisseur</Libelle_Classe_Temporelle>
+                <Rang_Cadran>1</Rang_Cadran>
+                <Valeur>6000</Valeur>
+                <Indice_Vraisemblance>1</Indice_Vraisemblance>
+            </Classe_Temporelle>
+            
+            <Classe_Temporelle>
+                <Id_Classe_Temporelle>HCH</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Heures Creuses Hiver Fournisseur</Libelle_Classe_Temporelle>
+                <Rang_Cadran>2</Rang_Cadran>
+                <Valeur>4000</Valeur>
+                <Indice_Vraisemblance>1</Indice_Vraisemblance>
+            </Classe_Temporelle>
+            
+            <Classe_Temporelle>
+                <Id_Classe_Temporelle>HPB</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Heures Pleines Bleu Fournisseur</Libelle_Classe_Temporelle>
+                <Rang_Cadran>3</Rang_Cadran>
+                <Valeur>5500</Valeur>
+                <Indice_Vraisemblance>1</Indice_Vraisemblance>
+            </Classe_Temporelle>
+            
+            <Classe_Temporelle>
+                <Id_Classe_Temporelle>HCB</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Heures Creuses Bleu Fournisseur</Libelle_Classe_Temporelle>
+                <Rang_Cadran>4</Rang_Cadran>
+                <Valeur>3500</Valeur>
+                <Indice_Vraisemblance>1</Indice_Vraisemblance>
+            </Classe_Temporelle>
+            
+            <Puissance_Maximale>
+                <Valeur>9200</Valeur>
+            </Puissance_Maximale>
+        </Donnees_Releve>
+    </PRM>
+</R151>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flux_R15>
+    <En_Tete_Flux>
+        <Unite_Mesure_Index>KWH</Unite_Mesure_Index>
+    </En_Tete_Flux>
+    
+    <PRM>
+        <Id_PRM>12345678901234</Id_PRM>
+        <Donnees_Releve>
+            <Date_Releve>2024-01-15</Date_Releve>
+            <Id_Calendrier>CAL_FOURN_2024</Id_Calendrier>
+            <Ref_Situation_Contractuelle>REF123456</Ref_Situation_Contractuelle>
+            <Type_Compteur>LINKY</Type_Compteur>
+            <Motif_Releve>CYCLIQUE</Motif_Releve>
+            <Ref_Demandeur>DEM123</Ref_Demandeur>
+            <Id_Affaire>AFF456</Id_Affaire>
+            
+            <Classe_Temporelle_Distributeur>
+                <Id_Classe_Temporelle>HP</Id_Classe_Temporelle>
+                <Valeur>12500</Valeur>
+            </Classe_Temporelle_Distributeur>
+            
+            <Classe_Temporelle_Distributeur>
+                <Id_Classe_Temporelle>HC</Id_Classe_Temporelle>
+                <Valeur>8900</Valeur>
+            </Classe_Temporelle_Distributeur>
+        </Donnees_Releve>
+    </PRM>
+    
+    <PRM>
+        <Id_PRM>98765432109876</Id_PRM>
+        <Donnees_Releve>
+            <Date_Releve>2024-01-20</Date_Releve>
+            <Id_Calendrier>CAL_FOURN_2024</Id_Calendrier>
+            <Ref_Situation_Contractuelle>REF789012</Ref_Situation_Contractuelle>
+            <Type_Compteur>ELECTRONIQUE</Type_Compteur>
+            <Motif_Releve>PONCTUEL</Motif_Releve>
+            <Ref_Demandeur>DEM789</Ref_Demandeur>
+            <Id_Affaire>AFF012</Id_Affaire>
+            
+            <Classe_Temporelle_Distributeur>
+                <Id_Classe_Temporelle>BASE</Id_Classe_Temporelle>
+                <Valeur>45000</Valeur>
+            </Classe_Temporelle_Distributeur>
+        </Donnees_Releve>
+    </PRM>
+    
+    <PRM>
+        <Id_PRM>11111111111111</Id_PRM>
+        <Donnees_Releve>
+            <Date_Releve>2024-01-25</Date_Releve>
+            <Id_Calendrier>CAL_FOURN_2024</Id_Calendrier>
+            <Ref_Situation_Contractuelle>REF111111</Ref_Situation_Contractuelle>
+            <Type_Compteur>LINKY</Type_Compteur>
+            <Motif_Releve>CYCLIQUE</Motif_Releve>
+            <Ref_Demandeur>DEM111</Ref_Demandeur>
+            <Id_Affaire>AFF111</Id_Affaire>
+            
+            <Classe_Temporelle_Distributeur>
+                <Id_Classe_Temporelle>HPH</Id_Classe_Temporelle>
+                <Valeur>5000</Valeur>
+            </Classe_Temporelle_Distributeur>
+            
+            <Classe_Temporelle_Distributeur>
+                <Id_Classe_Temporelle>HCH</Id_Classe_Temporelle>
+                <Valeur>3000</Valeur>
+            </Classe_Temporelle_Distributeur>
+            
+            <Classe_Temporelle_Distributeur>
+                <Id_Classe_Temporelle>HPB</Id_Classe_Temporelle>
+                <Valeur>4500</Valeur>
+            </Classe_Temporelle_Distributeur>
+            
+            <Classe_Temporelle_Distributeur>
+                <Id_Classe_Temporelle>HCB</Id_Classe_Temporelle>
+                <Valeur>2500</Valeur>
+            </Classe_Temporelle_Distributeur>
+        </Donnees_Releve>
+    </PRM>
+</Flux_R15>

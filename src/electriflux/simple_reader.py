@@ -222,6 +222,11 @@ def iterative_process_flux(flux_type:str, xml_dir:Path, config_path:Path|None=No
     append_to_history(xml_dir / Path('history.csv'), xml_files)
     return data
 
+# Alias pour la compatibilité
+convert_flux = process_flux
+convert_flux_iterate = iterative_process_flux
+append_data = append_to_data
+
 def main():
     from icecream import ic
     # reset_flux('F15', Path('~/data/flux_enedis_v2/F15').expanduser())

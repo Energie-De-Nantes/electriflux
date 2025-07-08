@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flux_F12>
+    <En_Tete_Flux>
+        <Identifiant_Flux>F12_202401_001</Identifiant_Flux>
+    </En_Tete_Flux>
+    
+    <Rappel_En_Tete>
+        <Num_Facture>FACT123456</Num_Facture>
+        <Date_Facture>2024-01-15</Date_Facture>
+    </Rappel_En_Tete>
+    
+    <Ligne_Facture>
+        <Num_Sous_Lot>1</Num_Sous_Lot>
+        <Type_Facturation>NORMALE</Type_Facturation>
+        <Motif_Rectif></Motif_Rectif>
+        <Id_PRM>12345678901234</Id_PRM>
+        <Type_PRM>C5</Type_PRM>
+        <Code_Segmentation_ERDF>C5</Code_Segmentation_ERDF>
+        <Puissance_Ponderee>6</Puissance_Ponderee>
+        <Autoproducteur>NON</Autoproducteur>
+        <Tarif_Souscrit>BASE</Tarif_Souscrit>
+        
+        <Element_Valorise>
+            <Id_EV>TURPE_FIXE</Id_EV>
+            <Libelle_EV>Part fixe TURPE</Libelle_EV>
+            <Code_Recapitulatif>REC01</Code_Recapitulatif>
+            <CSPE_Applicable>OUI</CSPE_Applicable>
+            <Taux_TVA_Applicable>20.00</Taux_TVA_Applicable>
+            <Code_Debit_Credit>D</Code_Debit_Credit>
+            
+            <Acheminement>
+                <Date_Debut>2024-01-01</Date_Debut>
+                <Date_Fin>2024-01-31</Date_Fin>
+                <Unite_Quantite>JOUR</Unite_Quantite>
+                <Quantite>31</Quantite>
+                <Prix_Unitaire>0.45</Prix_Unitaire>
+                <Montant_HT>13.95</Montant_HT>
+            </Acheminement>
+        </Element_Valorise>
+        
+        <Element_Valorise>
+            <Id_EV>TURPE_VAR</Id_EV>
+            <Libelle_EV>Part variable TURPE</Libelle_EV>
+            <Code_Recapitulatif>REC02</Code_Recapitulatif>
+            <CSPE_Applicable>OUI</CSPE_Applicable>
+            <Taux_TVA_Applicable>20.00</Taux_TVA_Applicable>
+            <Code_Debit_Credit>D</Code_Debit_Credit>
+            
+            <Acheminement>
+                <Date_Debut>2024-01-01</Date_Debut>
+                <Date_Fin>2024-01-31</Date_Fin>
+                <Unite_Quantite>KWH</Unite_Quantite>
+                <Quantite>250</Quantite>
+                <Prix_Unitaire>0.0568</Prix_Unitaire>
+                <Montant_HT>14.20</Montant_HT>
+            </Acheminement>
+        </Element_Valorise>
+    </Ligne_Facture>
+    
+    <Ligne_Facture>
+        <Num_Sous_Lot>2</Num_Sous_Lot>
+        <Type_Facturation>RECTIFICATION</Type_Facturation>
+        <Motif_Rectif>ERREUR_INDEX</Motif_Rectif>
+        <Id_PRM>98765432109876</Id_PRM>
+        <Type_PRM>C4</Type_PRM>
+        <Code_Segmentation_ERDF>C4</Code_Segmentation_ERDF>
+        <Puissance_Ponderee>12</Puissance_Ponderee>
+        <Autoproducteur>NON</Autoproducteur>
+        <Tarif_Souscrit>HP_HC</Tarif_Souscrit>
+        
+        <Element_Valorise>
+            <Id_EV>TURPE_FIXE</Id_EV>
+            <Libelle_EV>Part fixe TURPE - Rectification</Libelle_EV>
+            <Code_Recapitulatif>REC01</Code_Recapitulatif>
+            <CSPE_Applicable>OUI</CSPE_Applicable>
+            <Taux_TVA_Applicable>20.00</Taux_TVA_Applicable>
+            <Code_Debit_Credit>C</Code_Debit_Credit>
+            
+            <Acheminement>
+                <Date_Debut>2024-01-01</Date_Debut>
+                <Date_Fin>2024-01-15</Date_Fin>
+                <Unite_Quantite>JOUR</Unite_Quantite>
+                <Quantite>15</Quantite>
+                <Prix_Unitaire>0.90</Prix_Unitaire>
+                <Montant_HT>-13.50</Montant_HT>
+            </Acheminement>
+        </Element_Valorise>
+    </Ligne_Facture>
+</Flux_F12>

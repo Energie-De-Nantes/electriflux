@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flux_F15>
+    <En_Tete_Flux>
+        <Identifiant_Flux>F15_202401_001</Identifiant_Flux>
+    </En_Tete_Flux>
+    
+    <Rappel_En_Tete>
+        <Num_Facture>FACT789012</Num_Facture>
+        <Date_Facture>2024-01-20</Date_Facture>
+    </Rappel_En_Tete>
+    
+    <Donnees_Generales_Facture>
+        <Type_Facturation>NORMALE</Type_Facturation>
+        <Ligne_Facture>
+            <Donnees_PRM>
+                <Id_PRM>12345678901234</Id_PRM>
+            </Donnees_PRM>
+            
+            <Groupe_Donnees_Facture>
+                <Nature_EV>CONSOMMATION</Nature_EV>
+                
+                <Element_Valorise>
+                    <Id_EV>CONSO_HP</Id_EV>
+                    <Libelle_EV>Consommation Heures Pleines</Libelle_EV>
+                    <Taux_TVA_Applicable>5.50</Taux_TVA_Applicable>
+                    <Formule_Tarifaire_Acheminement>HP_HC</Formule_Tarifaire_Acheminement>
+                    <Unite_Quantite>KWH</Unite_Quantite>
+                    <Prix_Unitaire>0.1500</Prix_Unitaire>
+                    <Quantite>180</Quantite>
+                    <Montant_HT>27.00</Montant_HT>
+                    <Date_Debut>2024-01-01</Date_Debut>
+                    <Date_Fin>2024-01-31</Date_Fin>
+                </Element_Valorise>
+                
+                <Element_Valorise>
+                    <Id_EV>CONSO_HC</Id_EV>
+                    <Libelle_EV>Consommation Heures Creuses</Libelle_EV>
+                    <Taux_TVA_Applicable>5.50</Taux_TVA_Applicable>
+                    <Formule_Tarifaire_Acheminement>HP_HC</Formule_Tarifaire_Acheminement>
+                    <Unite_Quantite>KWH</Unite_Quantite>
+                    <Prix_Unitaire>0.1000</Prix_Unitaire>
+                    <Quantite>120</Quantite>
+                    <Montant_HT>12.00</Montant_HT>
+                    <Date_Debut>2024-01-01</Date_Debut>
+                    <Date_Fin>2024-01-31</Date_Fin>
+                </Element_Valorise>
+            </Groupe_Donnees_Facture>
+            
+            <Groupe_Donnees_Facture>
+                <Nature_EV>TAXES</Nature_EV>
+                
+                <Element_Valorise>
+                    <Id_EV>CSPE</Id_EV>
+                    <Libelle_EV>Contribution au Service Public de l'Electricité</Libelle_EV>
+                    <Taux_TVA_Applicable>20.00</Taux_TVA_Applicable>
+                    <Formule_Tarifaire_Acheminement>HP_HC</Formule_Tarifaire_Acheminement>
+                    <Unite_Quantite>KWH</Unite_Quantite>
+                    <Prix_Unitaire>0.0225</Prix_Unitaire>
+                    <Quantite>300</Quantite>
+                    <Montant_HT>6.75</Montant_HT>
+                    <Date_Debut>2024-01-01</Date_Debut>
+                    <Date_Fin>2024-01-31</Date_Fin>
+                </Element_Valorise>
+            </Groupe_Donnees_Facture>
+        </Ligne_Facture>
+    </Donnees_Generales_Facture>
+    
+    <Donnees_Generales_Facture>
+        <Type_Facturation>RECTIFICATION</Type_Facturation>
+        <Ligne_Facture>
+            <Donnees_PRM>
+                <Id_PRM>98765432109876</Id_PRM>
+            </Donnees_PRM>
+            
+            <Groupe_Donnees_Facture>
+                <Nature_EV>CONSOMMATION</Nature_EV>
+                
+                <Element_Valorise>
+                    <Id_EV>CONSO_BASE</Id_EV>
+                    <Libelle_EV>Consommation Base - Rectification</Libelle_EV>
+                    <Taux_TVA_Applicable>5.50</Taux_TVA_Applicable>
+                    <Formule_Tarifaire_Acheminement>BASE</Formule_Tarifaire_Acheminement>
+                    <Unite_Quantite>KWH</Unite_Quantite>
+                    <Prix_Unitaire>0.1200</Prix_Unitaire>
+                    <Quantite>-50</Quantite>
+                    <Montant_HT>-6.00</Montant_HT>
+                    <Date_Debut>2024-01-10</Date_Debut>
+                    <Date_Fin>2024-01-20</Date_Fin>
+                </Element_Valorise>
+            </Groupe_Donnees_Facture>
+        </Ligne_Facture>
+    </Donnees_Generales_Facture>
+</Flux_F15>

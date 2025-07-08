@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InvalidXML>
+    <UnclosedTag>
+        <Data>Some data</Data>
+    <!-- Missing closing tag for UnclosedTag -->
+</InvalidXML>

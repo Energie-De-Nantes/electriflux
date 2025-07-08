@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flux_C15>
+    <PRM>
+        <Id_PRM>12345678901234</Id_PRM>
+        <Segment_Clientele>C5</Segment_Clientele>
+        <Num_Depannage>0800123456</Num_Depannage>
+        
+        <Situation_Contractuelle>
+            <Titulaire_Contrat>
+                <Categorie>PARTICULIER</Categorie>
+            </Titulaire_Contrat>
+            <Etat_Contractuel>ACTIF</Etat_Contractuel>
+            <Ref_Situation_Contractuelle>REF123456</Ref_Situation_Contractuelle>
+            <Structure_Tarifaire>
+                <Puissance_Souscrite>6</Puissance_Souscrite>
+                <Formule_Tarifaire_Acheminement>BASE</Formule_Tarifaire_Acheminement>
+            </Structure_Tarifaire>
+        </Situation_Contractuelle>
+        
+        <Dispositif_De_Comptage>
+            <Compteur>
+                <Type>LINKY</Type>
+                <Num_Serie>123456789</Num_Serie>
+            </Compteur>
+        </Dispositif_De_Comptage>
+        
+        <Date_Derniere_Modification_FTA>2024-01-15</Date_Derniere_Modification_FTA>
+        
+        <Evenement_Declencheur>
+            <Nature_Evenement>MISE_EN_SERVICE</Nature_Evenement>
+            <Type_Evenement>MES01</Type_Evenement>
+            <Date_Evenement>2024-01-10</Date_Evenement>
+            <Ref_Demandeur>DEM123</Ref_Demandeur>
+            <Id_Affaire>AFF456</Id_Affaire>
+            
+            <Releves>
+                <Donnees_Releve>
+                    <Date_Releve>2024-01-10</Date_Releve>
+                    <Id_Calendrier_Distributeur>CAL_DIST</Id_Calendrier_Distributeur>
+                    <Id_Calendrier>CAL_FOURN</Id_Calendrier>
+                    <Nature_Index>REEL</Nature_Index>
+                    <Code_Qualification>1</Code_Qualification>
+                    
+                    <Classe_Temporelle_Distributeur>
+                        <Id_Classe_Temporelle>HP</Id_Classe_Temporelle>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>1234</Valeur>
+                    </Classe_Temporelle_Distributeur>
+                    
+                    <Classe_Temporelle_Distributeur>
+                        <Id_Classe_Temporelle>HC</Id_Classe_Temporelle>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>5678</Valeur>
+                    </Classe_Temporelle_Distributeur>
+                </Donnees_Releve>
+                
+                <Donnees_Releve>
+                    <Date_Releve>2024-01-11</Date_Releve>
+                    <Id_Calendrier_Distributeur>CAL_DIST</Id_Calendrier_Distributeur>
+                    <Id_Calendrier>CAL_FOURN</Id_Calendrier>
+                    <Nature_Index>ESTIME</Nature_Index>
+                    <Code_Qualification>2</Code_Qualification>
+                    
+                    <Classe_Temporelle_Distributeur>
+                        <Id_Classe_Temporelle>HP</Id_Classe_Temporelle>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>1250</Valeur>
+                    </Classe_Temporelle_Distributeur>
+                    
+                    <Classe_Temporelle_Distributeur>
+                        <Id_Classe_Temporelle>HC</Id_Classe_Temporelle>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>5700</Valeur>
+                    </Classe_Temporelle_Distributeur>
+                </Donnees_Releve>
+            </Releves>
+        </Evenement_Declencheur>
+    </PRM>
+    
+    <PRM>
+        <Id_PRM>98765432109876</Id_PRM>
+        <Segment_Clientele>C4</Segment_Clientele>
+        <Num_Depannage>0800123456</Num_Depannage>
+        
+        <Situation_Contractuelle>
+            <Titulaire_Contrat>
+                <Categorie>PROFESSIONNEL</Categorie>
+            </Titulaire_Contrat>
+            <Etat_Contractuel>ACTIF</Etat_Contractuel>
+            <Ref_Situation_Contractuelle>REF789012</Ref_Situation_Contractuelle>
+            <Structure_Tarifaire>
+                <Puissance_Souscrite>12</Puissance_Souscrite>
+                <Formule_Tarifaire_Acheminement>HP_HC</Formule_Tarifaire_Acheminement>
+            </Structure_Tarifaire>
+        </Situation_Contractuelle>
+        
+        <Dispositif_De_Comptage>
+            <Compteur>
+                <Type>ELECTRONIQUE</Type>
+                <Num_Serie>987654321</Num_Serie>
+            </Compteur>
+        </Dispositif_De_Comptage>
+        
+        <Date_Derniere_Modification_FTA>2024-01-20</Date_Derniere_Modification_FTA>
+        
+        <Evenement_Declencheur>
+            <Nature_Evenement>CHANGEMENT_FOURNISSEUR</Nature_Evenement>
+            <Type_Evenement>CHF01</Type_Evenement>
+            <Date_Evenement>2024-01-20</Date_Evenement>
+            <Ref_Demandeur>DEM789</Ref_Demandeur>
+            <Id_Affaire>AFF012</Id_Affaire>
+            
+            <Releves>
+                <Donnees_Releve>
+                    <Date_Releve>2024-01-20</Date_Releve>
+                    <Id_Calendrier_Distributeur>CAL_DIST</Id_Calendrier_Distributeur>
+                    <Id_Calendrier>CAL_FOURN</Id_Calendrier>
+                    <Nature_Index>REEL</Nature_Index>
+                    <Code_Qualification>1</Code_Qualification>
+                    
+                    <Classe_Temporelle_Distributeur>
+                        <Id_Classe_Temporelle>BASE</Id_Classe_Temporelle>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>15000</Valeur>
+                    </Classe_Temporelle_Distributeur>
+                </Donnees_Releve>
+            </Releves>
+        </Evenement_Declencheur>
+    </PRM>
+</Flux_C15>

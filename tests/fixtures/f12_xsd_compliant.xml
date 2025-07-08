@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Detail_Facturation>
+    <En_Tete_Flux>
+        <Identifiant_Flux>F12</Identifiant_Flux>
+        <Libelle_Flux>Flux de facture F12</Libelle_Flux>
+        <Version_XSD>1.10.4</Version_XSD>
+        <Identifiant_Emetteur>Enedis</Identifiant_Emetteur>
+        <Identifiant_Destinataire>FOURN001</Identifiant_Destinataire>
+        <Date_Creation>2024-01-15T10:30:00</Date_Creation>
+    </En_Tete_Flux>
+    
+    <Rappel_En_Tete>
+        <Num_Facture>F240150001</Num_Facture>
+        <Date_Facture>2024-01-15</Date_Facture>
+        <Devise>EUR</Devise>
+        <Agence_ERDF>0321</Agence_ERDF>
+    </Rappel_En_Tete>
+    
+    <Sous_Lot>
+        <Num_Sous_Lot>1</Num_Sous_Lot>
+        <Type_Facturation>CYCL</Type_Facturation>
+        <Id_PRM>12345678901234</Id_PRM>
+        <Date_Sous_Lot>2024-01-15</Date_Sous_Lot>
+        <Code_Segmentation_ERDF>C5</Code_Segmentation_ERDF>
+        <Type_PRM>C5</Type_PRM>
+        <Autoproducteur>false</Autoproducteur>
+        <Puissance_Ponderee>6.00</Puissance_Ponderee>
+        <Tarif_Souscrit>BTSUPLU</Tarif_Souscrit>
+        
+        <Element_Valorise>
+            <Id_EV>TURPE_FIXE</Id_EV>
+            <Libelle_EV>Part fixe TURPE</Libelle_EV>
+            <Code_Recapitulatif>CGEST</Code_Recapitulatif>
+            <CSPE_Applicable>OUI</CSPE_Applicable>
+            <Taux_TVA_Applicable>20.00</Taux_TVA_Applicable>
+            <Code_Debit_Credit>D</Code_Debit_Credit>
+            
+            <Acheminement>
+                <Date_Debut>2024-01-01</Date_Debut>
+                <Date_Fin>2024-01-31</Date_Fin>
+                <Unite_Quantite>JOUR</Unite_Quantite>
+                <Quantite>31.00</Quantite>
+                <Prix_Unitaire>0.45020</Prix_Unitaire>
+                <Montant_HT>13.96</Montant_HT>
+            </Acheminement>
+        </Element_Valorise>
+        
+        <Element_Valorise>
+            <Id_EV>TURPE_VAR</Id_EV>
+            <Libelle_EV>Part variable TURPE</Libelle_EV>
+            <Code_Recapitulatif>CGEST</Code_Recapitulatif>
+            <CSPE_Applicable>OUI</CSPE_Applicable>
+            <Taux_TVA_Applicable>20.00</Taux_TVA_Applicable>
+            <Code_Debit_Credit>D</Code_Debit_Credit>
+            
+            <Acheminement>
+                <Date_Debut>2024-01-01</Date_Debut>
+                <Date_Fin>2024-01-31</Date_Fin>
+                <Unite_Quantite>KWH</Unite_Quantite>
+                <Quantite>250.00</Quantite>
+                <Prix_Unitaire>0.05685</Prix_Unitaire>
+                <Montant_HT>14.21</Montant_HT>
+            </Acheminement>
+        </Element_Valorise>
+        
+        <Element_Valorise>
+            <Id_EV>CTA</Id_EV>
+            <Libelle_EV>Contribution Tarifaire d'Acheminement</Libelle_EV>
+            <Code_Recapitulatif>CGEST</Code_Recapitulatif>
+            <CSPE_Applicable>NON</CSPE_Applicable>
+            <Taux_TVA_Applicable>5.50</Taux_TVA_Applicable>
+            <Code_Debit_Credit>D</Code_Debit_Credit>
+            
+            <Acheminement>
+                <Date_Debut>2024-01-01</Date_Debut>
+                <Date_Fin>2024-01-31</Date_Fin>
+                <Unite_Quantite>EUR</Unite_Quantite>
+                <Quantite>1.00</Quantite>
+                <Prix_Unitaire>2.04</Prix_Unitaire>
+                <Montant_HT>2.04</Montant_HT>
+            </Acheminement>
+        </Element_Valorise>
+        
+        <Sous_Total>
+            <Sous_Total_HT>30.21</Sous_Total_HT>
+            <Sous_Total_TVA>5.52</Sous_Total_TVA>
+            <Sous_Total_TTC>35.73</Sous_Total_TTC>
+        </Sous_Total>
+    </Sous_Lot>
+    
+    <Sous_Lot>
+        <Num_Sous_Lot>2</Num_Sous_Lot>
+        <Type_Facturation>RECT</Type_Facturation>
+        <Id_PRM>98765432109876</Id_PRM>
+        <Date_Sous_Lot>2024-01-20</Date_Sous_Lot>
+        <Code_Segmentation_ERDF>C4</Code_Segmentation_ERDF>
+        <Type_PRM>C4</Type_PRM>
+        <Autoproducteur>false</Autoproducteur>
+        <Puissance_Ponderee>12.00</Puissance_Ponderee>
+        <Tarif_Souscrit>HTA5</Tarif_Souscrit>
+        
+        <Element_Valorise>
+            <Id_EV>TURPE_FIXE</Id_EV>
+            <Libelle_EV>Part fixe TURPE - Rectification</Libelle_EV>
+            <Code_Recapitulatif>CGEST</Code_Recapitulatif>
+            <CSPE_Applicable>OUI</CSPE_Applicable>
+            <Taux_TVA_Applicable>20.00</Taux_TVA_Applicable>
+            <Code_Debit_Credit>C</Code_Debit_Credit>
+            
+            <Acheminement>
+                <Date_Debut>2024-01-01</Date_Debut>
+                <Date_Fin>2024-01-15</Date_Fin>
+                <Unite_Quantite>JOUR</Unite_Quantite>
+                <Quantite>15.00</Quantite>
+                <Prix_Unitaire>0.90040</Prix_Unitaire>
+                <Montant_HT>-13.51</Montant_HT>
+            </Acheminement>
+        </Element_Valorise>
+        
+        <Element_Valorise>
+            <Id_EV>PRESTATIONS</Id_EV>
+            <Libelle_EV>Frais de mise en service</Libelle_EV>
+            <Code_Recapitulatif>CPREST</Code_Recapitulatif>
+            <CSPE_Applicable>NON</CSPE_Applicable>
+            <Taux_TVA_Applicable>20.00</Taux_TVA_Applicable>
+            <Code_Debit_Credit>D</Code_Debit_Credit>
+            
+            <Prestations>
+                <Date_Debut>2024-01-15</Date_Debut>
+                <Date_Fin>2024-01-15</Date_Fin>
+                <Unite_Quantite>UNITE</Unite_Quantite>
+                <Quantite>1.00</Quantite>
+                <Prix_Unitaire>50.00</Prix_Unitaire>
+                <Montant_HT>50.00</Montant_HT>
+            </Prestations>
+        </Element_Valorise>
+        
+        <Sous_Total>
+            <Sous_Total_HT>36.49</Sous_Total_HT>
+            <Sous_Total_TVA>6.50</Sous_Total_TVA>
+            <Sous_Total_TTC>42.99</Sous_Total_TTC>
+        </Sous_Total>
+    </Sous_Lot>
+    
+    <Sous_Total_Fichier>
+        <Rang_Fichier>1</Rang_Fichier>
+    </Sous_Total_Fichier>
+</Detail_Facturation>

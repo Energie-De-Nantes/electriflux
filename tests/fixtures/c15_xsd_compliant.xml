@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<C15>
+    <En_Tete_Flux>
+        <Identifiant_Flux>C15</Identifiant_Flux>
+        <Libelle_Flux>Description de la situation contractuelle des PRM du segment C5</Libelle_Flux>
+        <Version_XSD>5.1.0</Version_XSD>
+        <Identifiant_Emetteur>ENEDIS</Identifiant_Emetteur>
+        <Identifiant_Destinataire>FOURNISSEUR_001</Identifiant_Destinataire>
+        <Date_Creation>2024-01-15T10:30:00</Date_Creation>
+        <Instance_GRD>OUEST</Instance_GRD>
+    </En_Tete_Flux>
+    
+    <Contrat>
+        <Identifiant>CONT_123456</Identifiant>
+        <Nature_Contrat>Contrat de fourniture</Nature_Contrat>
+        <Code_EIC_Fournisseur>17Y123456789012T</Code_EIC_Fournisseur>
+        <Code_EIC_Responsable_Equilibre>17X123456789012U</Code_EIC_Responsable_Equilibre>
+    </Contrat>
+    
+    <PRM>
+        <Id_PRM>12345678901234</Id_PRM>
+        <Segment_Clientele>C5</Segment_Clientele>
+        <Num_Depannage>0800123456</Num_Depannage>
+        <Date_Derniere_Modification_FTA>2024-01-10</Date_Derniere_Modification_FTA>
+        <Refus_Pose_AMM>false</Refus_Pose_AMM>
+        <Jour_Fixe_Releve>15</Jour_Fixe_Releve>
+        <Periodicite_Releve>6</Periodicite_Releve>
+        <Rang_Releve>1</Rang_Releve>
+        <Niveau_Ouverture_Services>2</Niveau_Ouverture_Services>
+        <Date_Changement_Niveau_Ouverture_Services>2023-06-01</Date_Changement_Niveau_Ouverture_Services>
+        <Teleoperable>true</Teleoperable>
+        <Borne_Fixe>false</Borne_Fixe>
+        <Autoproducteur>false</Autoproducteur>
+        <Autoconsommation_Collective>0</Autoconsommation_Collective>
+        
+        <Adresse_Installation>
+            <Num_Rue>123</Num_Rue>
+            <Rue>RUE DE LA PAIX</Rue>
+            <Code_Postal>75001</Code_Postal>
+            <Code_Commune>75101</Code_Commune>
+            <Libelle_Commune>PARIS 1ER ARRONDISSEMENT</Libelle_Commune>
+            <Pays>FRANCE</Pays>
+        </Adresse_Installation>
+        
+        <Alimentation>
+            <Etat_Alimentation>ALIM</Etat_Alimentation>
+            <Date_Debut_Etat_Alimentation>2023-01-01</Date_Debut_Etat_Alimentation>
+            <Mode_Alimentation>MONO</Mode_Alimentation>
+            <Tension_De_Livraison>230_400V</Tension_De_Livraison>
+            <P_Raccordement_Soutirage>6.000000000000000</P_Raccordement_Soutirage>
+            <Domaine_De_Tension>BT</Domaine_De_Tension>
+            <Branchement_Provisoire>false</Branchement_Provisoire>
+        </Alimentation>
+        
+        <Situation_Contractuelle>
+            <Etat_Contractuel>EN SERVICE</Etat_Contractuel>
+            <Ref_Situation_Contractuelle>REF123456</Ref_Situation_Contractuelle>
+            <Date_Mise_En_Service>2023-01-01</Date_Mise_En_Service>
+            <Num_Sequence>1</Num_Sequence>
+            <Date_Debut_Num_Sequence>2023-01-01</Date_Debut_Num_Sequence>
+            
+            <Structure_Tarifaire>
+                <Puissance_Souscrite>6</Puissance_Souscrite>
+                <Formule_Tarifaire_Acheminement>BASE</Formule_Tarifaire_Acheminement>
+            </Structure_Tarifaire>
+            
+            <Titulaire_Contrat>
+                <Categorie>PARTICULIER</Categorie>
+            </Titulaire_Contrat>
+        </Situation_Contractuelle>
+        
+        <Dispositif_De_Comptage>
+            <Compteur>
+                <Type>LINKY</Type>
+                <Sous_Type>G3</Sous_Type>
+                <Constructeur>SAGEMCOM</Constructeur>
+                <Num_Serie>123456789</Num_Serie>
+                <Tension_Fonctionnement>230V</Tension_Fonctionnement>
+                <Calibre>60A</Calibre>
+                <Nb_Cadrans>2</Nb_Cadrans>
+                <Accessibilite>true</Accessibilite>
+                <TIC_Activable>true</TIC_Activable>
+                <TIC_Activee>false</TIC_Activee>
+                <TIC_Standard>true</TIC_Standard>
+                <Localisation>GAINE</Localisation>
+                <Palier_Technologique>G3</Palier_Technologique>
+                <Finalite_Compteur>SOUTIRAGE</Finalite_Compteur>
+                <Pas_Courbe_De_Charge_Soutirage>30</Pas_Courbe_De_Charge_Soutirage>
+            </Compteur>
+        </Dispositif_De_Comptage>
+        
+        <Evenement_Declencheur>
+            <Type_Evenement>CONTRAT</Type_Evenement>
+            <Origine_Evenement>0</Origine_Evenement>
+            <Nature_Evenement>MISE_EN_SERVICE</Nature_Evenement>
+            <Date_Evenement>2024-01-10T14:30:00</Date_Evenement>
+            <Id_Affaire>AFF456789</Id_Affaire>
+            <Ref_Demandeur>DEM123456</Ref_Demandeur>
+            
+            <Releves>
+                <Donnees_Releve>
+                    <Code_Qualification>1</Code_Qualification>
+                    <Date_Releve>2024-01-10T14:30:00</Date_Releve>
+                    <Id_Calendrier_Distributeur>CAL_DIST_2024</Id_Calendrier_Distributeur>
+                    <Libelle_Calendrier_Distributeur>Calendrier Distributeur 2024</Libelle_Calendrier_Distributeur>
+                    <Id_Calendrier>CAL_FOURN_2024</Id_Calendrier>
+                    <Libelle_Calendrier>Calendrier Fournisseur 2024</Libelle_Calendrier>
+                    <Nature_Index>REEL</Nature_Index>
+                    
+                    <Classe_Temporelle>
+                        <Id_Classe_Temporelle>HP</Id_Classe_Temporelle>
+                        <Libelle_Classe_Temporelle>Heures Pleines</Libelle_Classe_Temporelle>
+                        <Rang_Cadran>1</Rang_Cadran>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Unite_Mesure>kWh</Unite_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>1234</Valeur>
+                        <Nb_Chiffres_Cadran>6</Nb_Chiffres_Cadran>
+                        <Indicateur_Passage_A_Zero>0</Indicateur_Passage_A_Zero>
+                        <Coefficient_Lecture>1.000000000000000</Coefficient_Lecture>
+                    </Classe_Temporelle>
+                    
+                    <Classe_Temporelle>
+                        <Id_Classe_Temporelle>HC</Id_Classe_Temporelle>
+                        <Libelle_Classe_Temporelle>Heures Creuses</Libelle_Classe_Temporelle>
+                        <Rang_Cadran>2</Rang_Cadran>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Unite_Mesure>kWh</Unite_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>5678</Valeur>
+                        <Nb_Chiffres_Cadran>6</Nb_Chiffres_Cadran>
+                        <Indicateur_Passage_A_Zero>0</Indicateur_Passage_A_Zero>
+                        <Coefficient_Lecture>1.000000000000000</Coefficient_Lecture>
+                    </Classe_Temporelle>
+                    
+                    <Classe_Temporelle_Distributeur>
+                        <Id_Classe_Temporelle>HP</Id_Classe_Temporelle>
+                        <Libelle_Classe_Temporelle>Heures Pleines Distributeur</Libelle_Classe_Temporelle>
+                        <Rang_Cadran>1</Rang_Cadran>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Unite_Mesure>kWh</Unite_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>1234</Valeur>
+                        <Nb_Chiffres_Cadran>6</Nb_Chiffres_Cadran>
+                        <Indicateur_Passage_A_Zero>0</Indicateur_Passage_A_Zero>
+                        <Coefficient_Lecture>1.000000000000000</Coefficient_Lecture>
+                    </Classe_Temporelle_Distributeur>
+                    
+                    <Classe_Temporelle_Distributeur>
+                        <Id_Classe_Temporelle>HC</Id_Classe_Temporelle>
+                        <Libelle_Classe_Temporelle>Heures Creuses Distributeur</Libelle_Classe_Temporelle>
+                        <Rang_Cadran>2</Rang_Cadran>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Unite_Mesure>kWh</Unite_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>5678</Valeur>
+                        <Nb_Chiffres_Cadran>6</Nb_Chiffres_Cadran>
+                        <Indicateur_Passage_A_Zero>0</Indicateur_Passage_A_Zero>
+                        <Coefficient_Lecture>1.000000000000000</Coefficient_Lecture>
+                    </Classe_Temporelle_Distributeur>
+                </Donnees_Releve>
+                
+                <Donnees_Releve>
+                    <Code_Qualification>2</Code_Qualification>
+                    <Date_Releve>2024-01-11T15:00:00</Date_Releve>
+                    <Id_Calendrier_Distributeur>CAL_DIST_2024</Id_Calendrier_Distributeur>
+                    <Libelle_Calendrier_Distributeur>Calendrier Distributeur 2024</Libelle_Calendrier_Distributeur>
+                    <Id_Calendrier>CAL_FOURN_2024</Id_Calendrier>
+                    <Libelle_Calendrier>Calendrier Fournisseur 2024</Libelle_Calendrier>
+                    <Nature_Index>ESTIME</Nature_Index>
+                    
+                    <Classe_Temporelle>
+                        <Id_Classe_Temporelle>HP</Id_Classe_Temporelle>
+                        <Libelle_Classe_Temporelle>Heures Pleines</Libelle_Classe_Temporelle>
+                        <Rang_Cadran>1</Rang_Cadran>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Unite_Mesure>kWh</Unite_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>1250</Valeur>
+                        <Nb_Chiffres_Cadran>6</Nb_Chiffres_Cadran>
+                        <Indicateur_Passage_A_Zero>0</Indicateur_Passage_A_Zero>
+                        <Coefficient_Lecture>1.000000000000000</Coefficient_Lecture>
+                    </Classe_Temporelle>
+                    
+                    <Classe_Temporelle>
+                        <Id_Classe_Temporelle>HC</Id_Classe_Temporelle>
+                        <Libelle_Classe_Temporelle>Heures Creuses</Libelle_Classe_Temporelle>
+                        <Rang_Cadran>2</Rang_Cadran>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Unite_Mesure>kWh</Unite_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>5700</Valeur>
+                        <Nb_Chiffres_Cadran>6</Nb_Chiffres_Cadran>
+                        <Indicateur_Passage_A_Zero>0</Indicateur_Passage_A_Zero>
+                        <Coefficient_Lecture>1.000000000000000</Coefficient_Lecture>
+                    </Classe_Temporelle>
+                    
+                    <Classe_Temporelle_Distributeur>
+                        <Id_Classe_Temporelle>HP</Id_Classe_Temporelle>
+                        <Libelle_Classe_Temporelle>Heures Pleines Distributeur</Libelle_Classe_Temporelle>
+                        <Rang_Cadran>1</Rang_Cadran>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Unite_Mesure>kWh</Unite_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>1250</Valeur>
+                        <Nb_Chiffres_Cadran>6</Nb_Chiffres_Cadran>
+                        <Indicateur_Passage_A_Zero>0</Indicateur_Passage_A_Zero>
+                        <Coefficient_Lecture>1.000000000000000</Coefficient_Lecture>
+                    </Classe_Temporelle_Distributeur>
+                    
+                    <Classe_Temporelle_Distributeur>
+                        <Id_Classe_Temporelle>HC</Id_Classe_Temporelle>
+                        <Libelle_Classe_Temporelle>Heures Creuses Distributeur</Libelle_Classe_Temporelle>
+                        <Rang_Cadran>2</Rang_Cadran>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Unite_Mesure>kWh</Unite_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>5700</Valeur>
+                        <Nb_Chiffres_Cadran>6</Nb_Chiffres_Cadran>
+                        <Indicateur_Passage_A_Zero>0</Indicateur_Passage_A_Zero>
+                        <Coefficient_Lecture>1.000000000000000</Coefficient_Lecture>
+                    </Classe_Temporelle_Distributeur>
+                </Donnees_Releve>
+            </Releves>
+        </Evenement_Declencheur>
+    </PRM>
+    
+    <PRM>
+        <Id_PRM>98765432109876</Id_PRM>
+        <Segment_Clientele>C5</Segment_Clientele>
+        <Num_Depannage>0800123456</Num_Depannage>
+        <Date_Derniere_Modification_FTA>2024-01-20</Date_Derniere_Modification_FTA>
+        <Refus_Pose_AMM>false</Refus_Pose_AMM>
+        <Jour_Fixe_Releve>20</Jour_Fixe_Releve>
+        <Periodicite_Releve>6</Periodicite_Releve>
+        <Rang_Releve>2</Rang_Releve>
+        <Niveau_Ouverture_Services>1</Niveau_Ouverture_Services>
+        <Date_Changement_Niveau_Ouverture_Services>2023-12-01</Date_Changement_Niveau_Ouverture_Services>
+        <Teleoperable>false</Teleoperable>
+        <Borne_Fixe>true</Borne_Fixe>
+        <Autoproducteur>true</Autoproducteur>
+        <Autoconsommation_Collective>1</Autoconsommation_Collective>
+        
+        <Adresse_Installation>
+            <Num_Rue>456</Num_Rue>
+            <Rue>AVENUE DE LA REPUBLIQUE</Rue>
+            <Code_Postal>69000</Code_Postal>
+            <Code_Commune>69001</Code_Commune>
+            <Libelle_Commune>LYON</Libelle_Commune>
+            <Pays>FRANCE</Pays>
+        </Adresse_Installation>
+        
+        <Alimentation>
+            <Etat_Alimentation>ALIM</Etat_Alimentation>
+            <Date_Debut_Etat_Alimentation>2022-06-01</Date_Debut_Etat_Alimentation>
+            <Mode_Alimentation>TRI</Mode_Alimentation>
+            <Tension_De_Livraison>230_400V</Tension_De_Livraison>
+            <P_Raccordement_Soutirage>12.000000000000000</P_Raccordement_Soutirage>
+            <Domaine_De_Tension>BT</Domaine_De_Tension>
+            <Branchement_Provisoire>false</Branchement_Provisoire>
+        </Alimentation>
+        
+        <Situation_Contractuelle>
+            <Etat_Contractuel>EN SERVICE</Etat_Contractuel>
+            <Ref_Situation_Contractuelle>REF789012</Ref_Situation_Contractuelle>
+            <Date_Mise_En_Service>2022-06-01</Date_Mise_En_Service>
+            <Num_Sequence>1</Num_Sequence>
+            <Date_Debut_Num_Sequence>2022-06-01</Date_Debut_Num_Sequence>
+            
+            <Structure_Tarifaire>
+                <Puissance_Souscrite>12</Puissance_Souscrite>
+                <Formule_Tarifaire_Acheminement>HP_HC</Formule_Tarifaire_Acheminement>
+            </Structure_Tarifaire>
+            
+            <Titulaire_Contrat>
+                <Categorie>PROFESSIONNEL</Categorie>
+            </Titulaire_Contrat>
+        </Situation_Contractuelle>
+        
+        <Dispositif_De_Comptage>
+            <Compteur>
+                <Type>ELECTRONIQUE</Type>
+                <Sous_Type>SAGEM</Sous_Type>
+                <Constructeur>SAGEM</Constructeur>
+                <Num_Serie>987654321</Num_Serie>
+                <Tension_Fonctionnement>230_400V</Tension_Fonctionnement>
+                <Calibre>60A</Calibre>
+                <Nb_Cadrans>1</Nb_Cadrans>
+                <Accessibilite>true</Accessibilite>
+                <TIC_Activable>false</TIC_Activable>
+                <TIC_Activee>false</TIC_Activee>
+                <TIC_Standard>false</TIC_Standard>
+                <Localisation>LOCAL</Localisation>
+                <Finalite_Compteur>SOUTIRAGE</Finalite_Compteur>
+            </Compteur>
+        </Dispositif_De_Comptage>
+        
+        <Evenement_Declencheur>
+            <Type_Evenement>TECHNIQUE</Type_Evenement>
+            <Origine_Evenement>1</Origine_Evenement>
+            <Nature_Evenement>CHANGEMENT_FOURNISSEUR</Nature_Evenement>
+            <Date_Evenement>2024-01-20T16:00:00</Date_Evenement>
+            <Id_Affaire>AFF012345</Id_Affaire>
+            <Ref_Demandeur>DEM789012</Ref_Demandeur>
+            
+            <Releves>
+                <Donnees_Releve>
+                    <Code_Qualification>1</Code_Qualification>
+                    <Date_Releve>2024-01-20T16:00:00</Date_Releve>
+                    <Id_Calendrier_Distributeur>CAL_DIST_2024</Id_Calendrier_Distributeur>
+                    <Libelle_Calendrier_Distributeur>Calendrier Distributeur 2024</Libelle_Calendrier_Distributeur>
+                    <Id_Calendrier>CAL_FOURN_2024</Id_Calendrier>
+                    <Libelle_Calendrier>Calendrier Fournisseur 2024</Libelle_Calendrier>
+                    <Nature_Index>REEL</Nature_Index>
+                    
+                    <Classe_Temporelle>
+                        <Id_Classe_Temporelle>BASE</Id_Classe_Temporelle>
+                        <Libelle_Classe_Temporelle>Base</Libelle_Classe_Temporelle>
+                        <Rang_Cadran>1</Rang_Cadran>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Unite_Mesure>kWh</Unite_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>15000</Valeur>
+                        <Nb_Chiffres_Cadran>6</Nb_Chiffres_Cadran>
+                        <Indicateur_Passage_A_Zero>0</Indicateur_Passage_A_Zero>
+                        <Coefficient_Lecture>1.000000000000000</Coefficient_Lecture>
+                    </Classe_Temporelle>
+                    
+                    <Classe_Temporelle_Distributeur>
+                        <Id_Classe_Temporelle>BASE</Id_Classe_Temporelle>
+                        <Libelle_Classe_Temporelle>Base Distributeur</Libelle_Classe_Temporelle>
+                        <Rang_Cadran>1</Rang_Cadran>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Unite_Mesure>kWh</Unite_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>15000</Valeur>
+                        <Nb_Chiffres_Cadran>6</Nb_Chiffres_Cadran>
+                        <Indicateur_Passage_A_Zero>0</Indicateur_Passage_A_Zero>
+                        <Coefficient_Lecture>1.000000000000000</Coefficient_Lecture>
+                    </Classe_Temporelle_Distributeur>
+                </Donnees_Releve>
+                
+                <Donnees_Releve>
+                    <Code_Qualification>2</Code_Qualification>
+                    <Date_Releve>2024-01-21T10:00:00</Date_Releve>
+                    <Id_Calendrier_Distributeur>CAL_DIST_2024</Id_Calendrier_Distributeur>
+                    <Libelle_Calendrier_Distributeur>Calendrier Distributeur 2024</Libelle_Calendrier_Distributeur>
+                    <Id_Calendrier>CAL_FOURN_2024</Id_Calendrier>
+                    <Libelle_Calendrier>Calendrier Fournisseur 2024</Libelle_Calendrier>
+                    <Nature_Index>ESTIME</Nature_Index>
+                    
+                    <Classe_Temporelle>
+                        <Id_Classe_Temporelle>BASE</Id_Classe_Temporelle>
+                        <Libelle_Classe_Temporelle>Base</Libelle_Classe_Temporelle>
+                        <Rang_Cadran>1</Rang_Cadran>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Unite_Mesure>kWh</Unite_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>15050</Valeur>
+                        <Nb_Chiffres_Cadran>6</Nb_Chiffres_Cadran>
+                        <Indicateur_Passage_A_Zero>0</Indicateur_Passage_A_Zero>
+                        <Coefficient_Lecture>1.000000000000000</Coefficient_Lecture>
+                    </Classe_Temporelle>
+                    
+                    <Classe_Temporelle_Distributeur>
+                        <Id_Classe_Temporelle>BASE</Id_Classe_Temporelle>
+                        <Libelle_Classe_Temporelle>Base Distributeur</Libelle_Classe_Temporelle>
+                        <Rang_Cadran>1</Rang_Cadran>
+                        <Classe_Mesure>1</Classe_Mesure>
+                        <Unite_Mesure>kWh</Unite_Mesure>
+                        <Sens_Mesure>0</Sens_Mesure>
+                        <Valeur>15050</Valeur>
+                        <Nb_Chiffres_Cadran>6</Nb_Chiffres_Cadran>
+                        <Indicateur_Passage_A_Zero>0</Indicateur_Passage_A_Zero>
+                        <Coefficient_Lecture>1.000000000000000</Coefficient_Lecture>
+                    </Classe_Temporelle_Distributeur>
+                </Donnees_Releve>
+            </Releves>
+        </Evenement_Declencheur>
+    </PRM>
+</C15>
