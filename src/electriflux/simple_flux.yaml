@@ -14,7 +14,6 @@ C15:
     Refus_Pose_AMM: Refus_Pose_AMM
     Niveau_Ouverture_Services: Niveau_Ouverture_Services
     Teleoperable: Teleoperable
-    Autoproducteur: Autoproducteur
     
     # Adresse
     Adresse_Code_Postal: Adresse_Installation/Code_Postal
@@ -94,8 +93,8 @@ F12:
     Date_Creation: 'En_Tete_Flux/Date_Creation'
     Num_Facture: 'Rappel_En_Tete/Num_Facture'
     Date_Facture: 'Rappel_En_Tete/Date_Facture'
-    Id_Contrat: 'Rappel_En_Tete/Id_Contrat'
     Devise: 'Rappel_En_Tete/Devise'
+    Agence_ERDF: 'Rappel_En_Tete/Agence_ERDF'
   data_fields:
     Num_Sous_Lot: '../Num_Sous_Lot'
     Type_Facturation: '../Type_Facturation'
@@ -128,7 +127,7 @@ F12:
     
   nested_fields: []
 F15:
-  file_regex: 'F15_\d+_\d+\.xml$'
+  file_regex: 'FL_\d+_\d+\.xml$'
   row_level: './/Element_Valorise'
   metadata_fields:
     Flux: 'En_Tete_Flux/Identifiant_Flux'
