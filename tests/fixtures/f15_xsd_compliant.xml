@@ -129,7 +129,7 @@
             <Nom>MARTIN</Nom>
             <Prenom>JEAN</Prenom>
             <Ref_Situation_Contractuelle>REF789012</Ref_Situation_Contractuelle>
-            <Type_Compteur>ELECTRONIQUE</Type_Compteur>
+            <Type_Compteur>ELE</Type_Compteur>
             <Date_Dernier_Releve_Reel>2024-01-20</Date_Dernier_Releve_Reel>
         </Donnees_PRM>
         

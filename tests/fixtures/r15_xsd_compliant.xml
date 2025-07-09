@@ -18,21 +18,15 @@
         <Donnees_Releve>
             <Id_Releve>REL001234567890</Id_Releve>
             <Date_Releve>2024-01-15T14:30:00</Date_Releve>
-            <Ref_Situation_Contractuelle>REF123456</Ref_Situation_Contractuelle>
-            <Id_Calendrier_Distributeur>CAL_DIST_2024</Id_Calendrier_Distributeur>
-            <Libelle_Calendrier_Distributeur>Calendrier Distributeur 2024</Libelle_Calendrier_Distributeur>
             <Id_Calendrier>CAL_FOURN_2024</Id_Calendrier>
             <Libelle_Calendrier>Calendrier Fournisseur 2024</Libelle_Calendrier>
             <Type_Client>1</Type_Client>
             <Niveau_Ouverture_Services>2</Niveau_Ouverture_Services>
-            <Id_Calendrier_Distributeur>CAL_DIST_2024</Id_Calendrier_Distributeur>
-            <Libelle_Calendrier_Distributeur>Calendrier Distributeur 2024</Libelle_Calendrier_Distributeur>
-            <Type_Compteur>LINKY</Type_Compteur>
+            <Type_Compteur>CFB</Type_Compteur>
             <Statut_Releve>INITIAL</Statut_Releve>
             <Motif_Releve>CYCLIQUE</Motif_Releve>
             <Nature_Index>REEL</Nature_Index>
             <Ref_Demandeur>DEM123456</Ref_Demandeur>
-            <Id_Affaire>AFF456789</Id_Affaire>
             
             <Classe_Temporelle_Distributeur>
                 <Id_Classe_Temporelle>HP</Id_Classe_Temporelle>
@@ -100,17 +94,13 @@
             <Date_Releve>2024-01-20T16:00:00</Date_Releve>
             <Id_Calendrier>CAL_FOURN_2024</Id_Calendrier>
             <Libelle_Calendrier>Calendrier Fournisseur 2024</Libelle_Calendrier>
-            <Ref_Situation_Contractuelle>REF789012</Ref_Situation_Contractuelle>
             <Type_Client>0</Type_Client>
             <Niveau_Ouverture_Services>1</Niveau_Ouverture_Services>
-            <Id_Calendrier_Distributeur>CAL_DIST_2024</Id_Calendrier_Distributeur>
-            <Libelle_Calendrier_Distributeur>Calendrier Distributeur 2024</Libelle_Calendrier_Distributeur>
-            <Type_Compteur>ELECTRONIQUE</Type_Compteur>
+            <Type_Compteur>CEB</Type_Compteur>
             <Statut_Releve>INITIAL</Statut_Releve>
             <Motif_Releve>PONCTUEL</Motif_Releve>
             <Nature_Index>ESTIME</Nature_Index>
             <Ref_Demandeur>DEM789012</Ref_Demandeur>
-            <Id_Affaire>AFF012345</Id_Affaire>
             
             <Classe_Temporelle_Distributeur>
                 <Id_Classe_Temporelle>BASE</Id_Classe_Temporelle>
@@ -150,17 +140,13 @@
             <Date_Releve>2024-01-25T12:00:00</Date_Releve>
             <Id_Calendrier>CAL_FOURN_2024</Id_Calendrier>
             <Libelle_Calendrier>Calendrier Fournisseur 2024</Libelle_Calendrier>
-            <Ref_Situation_Contractuelle>REF111111</Ref_Situation_Contractuelle>
             <Type_Client>1</Type_Client>
             <Niveau_Ouverture_Services>2</Niveau_Ouverture_Services>
-            <Id_Calendrier_Distributeur>CAL_DIST_2024</Id_Calendrier_Distributeur>
-            <Libelle_Calendrier_Distributeur>Calendrier Distributeur 2024</Libelle_Calendrier_Distributeur>
-            <Type_Compteur>LINKY</Type_Compteur>
+            <Type_Compteur>CFB</Type_Compteur>
             <Statut_Releve>INITIAL</Statut_Releve>
             <Motif_Releve>CYCLIQUE</Motif_Releve>
             <Nature_Index>REEL</Nature_Index>
             <Ref_Demandeur>DEM111111</Ref_Demandeur>
-            <Id_Affaire>AFF111111</Id_Affaire>
             
             <Classe_Temporelle_Distributeur>
                 <Id_Classe_Temporelle>HPH</Id_Classe_Temporelle>
@@ -217,6 +203,20 @@
                 <Indicateur_Passage_A_Zero>0</Indicateur_Passage_A_Zero>
                 <Coefficient_Lecture>1.000000000000000</Coefficient_Lecture>
             </Classe_Temporelle_Distributeur>
+            
+            <Classe_Temporelle>
+                <Id_Classe_Temporelle>HPH</Id_Classe_Temporelle>
+                <Libelle_Classe_Temporelle>Heures Pleines Hiver Fournisseur</Libelle_Classe_Temporelle>
+                <Rang_Cadran>1</Rang_Cadran>
+                <Classe_Mesure>1</Classe_Mesure>
+                <Unite_Mesure>kWh</Unite_Mesure>
+                <Sens_Mesure>0</Sens_Mesure>
+                <Valeur>5000</Valeur>
+                <Valeur_Precedent>4800</Valeur_Precedent>
+                <Nb_Chiffres_Cadran>6</Nb_Chiffres_Cadran>
+                <Indicateur_Passage_A_Zero>0</Indicateur_Passage_A_Zero>
+                <Coefficient_Lecture>1.000000000000000</Coefficient_Lecture>
+            </Classe_Temporelle>
         </Donnees_Releve>
     </PRM>
 </R15>
