@@ -327,5 +327,106 @@ class TestIntegrationWorkflows:
         pdl_22 = df[df['pdl'] == '22222222222222']
         assert len(pdl_22) == 10  # Une ligne par fichier
         assert all(pdl_22['Dist_HPH'] == '6000')
+    
+    def test_complete_rx5_json_workflow(self, fixtures_path, temp_dir):
+        """Test le workflow complet pour un flux RX5 JSON."""
+        # Copier les fixtures JSON RX5
+        shutil.copy(fixtures_path / "rx5_xsd_compliant.json", temp_dir / "RX5_001_123.json")
+        
+        df = process_flux('RX5', temp_dir)
+        
+        # Vérifications de base
+        assert not df.empty
+        assert len(df) == 2  # 2 mesures dans le fichier
+        
+        # Vérifier les métadonnées JSON
+        assert df['siDemandeur'].iloc[0] == 'SYSTEM001'
+        assert df['codeFlux'].iloc[0] == 'RX5'
+        assert df['idDemande'].iloc[0] == 'DEM202401001'
+        assert df['modePublication'].iloc[0] == 'COMPLET'
+        assert df['idPublication'].iloc[0] == 'PUB202401001'
+        assert df['format'].iloc[0] == 'JSON'
+        
+        # Vérifier les colonnes principales
+        expected_columns = [
+            'pdl', 'dateDebut', 'dateFin', 'etapeMetier', 'idMotifReleve',
+            'libelleMotifReleve', 'grandeurMetier', 'grandeurPhysique', 'unite',
+            'codeGrille', 'libelleGrille', 'codeCalendrier', 'libelleCalendrier'
+        ]
+        for col in expected_columns:
+            assert col in df.columns
+        
+        # Vérifier les colonnes des classes temporelles
+        assert 'CT_HP' in df.columns
+        assert 'CT_HC' in df.columns
+        assert 'CT_BASE' in df.columns
+        
+        # Vérifier les champs additionnels des classes temporelles
+        assert 'CT_libelleClasseTemporelle' in df.columns
+        assert 'CT_dateCreation' in df.columns
+        assert 'CT_codeNature' in df.columns
+        assert 'CT_codeStatut' in df.columns
+        
+        # Vérifier les données du premier PRM
+        first_row = df[df['pdl'] == '12345678901234'].iloc[0]
+        assert first_row['dateDebut'] == '2024-01-01T00:00:00'
+        assert first_row['dateFin'] == '2024-01-31T23:59:59'
+        assert first_row['etapeMetier'] == 'RELEVE_PERIODIQUE'
+        assert first_row['idMotifReleve'] == 'MOTIF_PERIODIQUE'
+        assert first_row['grandeurMetier'] == 'ENERGIE_ACTIVE_SOUTIRAGE'
+        assert first_row['unite'] == 'kWh'
+        assert first_row['CT_HP'] == '1587'
+        assert first_row['CT_HC'] == '3421'
+        assert first_row['CT_libelleClasseTemporelle'] == 'Heures Pleines'
+        assert first_row['CT_codeNature'] == 'REEL'
+        assert first_row['CT_codeStatut'] == 'VALIDE'
+        
+        # Vérifier les données du second PRM
+        second_row = df[df['pdl'] == '98765432109876'].iloc[0]
+        assert second_row['etapeMetier'] == 'RELEVE_EXCEPTIONNEL'
+        assert second_row['idMotifReleve'] == 'MOTIF_CHANGEMENT'
+        assert second_row['CT_BASE'] == '2876'
+        assert second_row['CT_libelleClasseTemporelle'] == 'Tarif Base'
+        
+        # Vérifier la configuration du calendrier
+        assert first_row['codeGrille'] == 'GRILLE_ENEDIS_STD'
+        assert first_row['libelleGrille'] == 'Grille Enedis Standard'
+        assert first_row['codeCalendrier'] == 'CAL_ENEDIS_2024'
+        assert first_row['libelleCalendrier'] == 'Calendrier Enedis 2024'
+        
+        assert second_row['codeGrille'] == 'GRILLE_ENEDIS_BASE'
+        assert second_row['libelleGrille'] == 'Grille Enedis Base'
+        assert second_row['codeCalendrier'] == 'CAL_ENEDIS_BASE_2024'
+        assert second_row['libelleCalendrier'] == 'Calendrier Enedis Base 2024'
+    
+    def test_rx5_json_iterative_workflow(self, fixtures_path, temp_dir):
+        """Test le workflow itératif pour RX5 JSON."""
+        # Étape 1: Premier fichier JSON
+        shutil.copy(fixtures_path / "rx5_minimal.json", temp_dir / "RX5_batch1.json")
+        
+        df1 = iterative_process_flux('RX5', temp_dir)
+        assert len(df1) == 2  # 2 mesures dans rx5_minimal.json
+        assert (temp_dir / "RX5.csv").exists()
+        assert (temp_dir / "history.csv").exists()
+        
+        # Étape 2: Ajouter un deuxième fichier JSON
+        shutil.copy(fixtures_path / "rx5_xsd_compliant.json", temp_dir / "RX5_batch2.json")
+        
+        df2 = iterative_process_flux('RX5', temp_dir)
+        assert len(df2) == 4  # 2 + 2 mesures
+        
+        # Vérifier que le premier fichier n'est pas retraité
+        history = pd.read_csv(temp_dir / "history.csv")
+        assert len(history) == 2
+        assert set(history['file']) == {'RX5_batch1.json', 'RX5_batch2.json'}
+        
+        # Vérifier que les données des deux fichiers sont présentes
+        pdl_values = df2['pdl'].unique()
+        assert '12345678901234' in pdl_values
+        assert '98765432109876' in pdl_values
+        
+        # Vérifier la cohérence des métadonnées
+        assert 'DEMANDEUR001' in df2['siDemandeur'].values  # Du fichier minimal
+        assert 'SYSTEM001' in df2['siDemandeur'].values     # Du fichier xsd_compliant
 
 

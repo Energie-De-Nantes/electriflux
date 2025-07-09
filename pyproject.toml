@@ -16,6 +16,7 @@ pyyaml = "^6.0.2"
 pycryptodome = "^3.21.0"
 paramiko = "^3.5.0"
 polars = "^1.21.0"
+jsonpath-ng = "^1.7.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"

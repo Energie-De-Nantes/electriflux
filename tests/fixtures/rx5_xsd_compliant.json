@@ -1,0 +1,125 @@
+{
+  "header": {
+    "siDemandeur": "SYSTEM001",
+    "typeDestinataire": "FOURNISSEUR",
+    "idDestinataire": "FOURN123",
+    "codeFlux": "RX5",
+    "idDemande": "DEM202401001",
+    "modePublication": "COMPLET",
+    "idPublication": "PUB202401001",
+    "format": "JSON",
+    "publicationCrp": "CRP202401001"
+  },
+  "mesures": [
+    {
+      "idPrm": "12345678901234",
+      "periode": {
+        "dateDebut": "2024-01-01T00:00:00",
+        "dateFin": "2024-01-31T23:59:59"
+      },
+      "contexte": [
+        {
+          "etapeMetier": "RELEVE_PERIODIQUE",
+          "idMotifReleve": "MOTIF_PERIODIQUE",
+          "libelleMotifReleve": "Relevé périodique mensuel",
+          "grandeur": [
+            {
+              "grandeurMetier": "ENERGIE_ACTIVE_SOUTIRAGE",
+              "grandeurPhysique": "ENERGIE",
+              "unite": "kWh",
+              "calendrier": [
+                {
+                  "codeGrille": "GRILLE_ENEDIS_STD",
+                  "libelleGrille": "Grille Enedis Standard",
+                  "codeCalendrier": "CAL_ENEDIS_2024",
+                  "libelleCalendrier": "Calendrier Enedis 2024",
+                  "classeTemporelle": [
+                    {
+                      "idClasseTemporelle": "HP",
+                      "libelleClasseTemporelle": "Heures Pleines",
+                      "quantite": [
+                        {
+                          "dateCreation": "2024-02-01T08:15:30",
+                          "dbtMesure": "2024-01-01T00:00:00",
+                          "finMesure": "2024-01-31T23:59:59",
+                          "quantite": 1587,
+                          "codeNature": "REEL",
+                          "libelleNature": "Index réel",
+                          "codeStatut": "VALIDE",
+                          "libelleStatut": "Validé contrôleur"
+                        }
+                      ]
+                    },
+                    {
+                      "idClasseTemporelle": "HC",
+                      "libelleClasseTemporelle": "Heures Creuses",
+                      "quantite": [
+                        {
+                          "dateCreation": "2024-02-01T08:15:30",
+                          "dbtMesure": "2024-01-01T00:00:00",
+                          "finMesure": "2024-01-31T23:59:59",
+                          "quantite": 3421,
+                          "codeNature": "REEL",
+                          "libelleNature": "Index réel",
+                          "codeStatut": "VALIDE",
+                          "libelleStatut": "Validé contrôleur"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "idPrm": "98765432109876",
+      "periode": {
+        "dateDebut": "2024-01-01T00:00:00",
+        "dateFin": "2024-01-31T23:59:59"
+      },
+      "contexte": [
+        {
+          "etapeMetier": "RELEVE_EXCEPTIONNEL",
+          "idMotifReleve": "MOTIF_CHANGEMENT",
+          "libelleMotifReleve": "Changement de fournisseur",
+          "grandeur": [
+            {
+              "grandeurMetier": "ENERGIE_ACTIVE_SOUTIRAGE",
+              "grandeurPhysique": "ENERGIE",
+              "unite": "kWh",
+              "calendrier": [
+                {
+                  "codeGrille": "GRILLE_ENEDIS_BASE",
+                  "libelleGrille": "Grille Enedis Base",
+                  "codeCalendrier": "CAL_ENEDIS_BASE_2024",
+                  "libelleCalendrier": "Calendrier Enedis Base 2024",
+                  "classeTemporelle": [
+                    {
+                      "idClasseTemporelle": "BASE",
+                      "libelleClasseTemporelle": "Tarif Base",
+                      "quantite": [
+                        {
+                          "dateCreation": "2024-02-01T08:15:30",
+                          "dbtMesure": "2024-01-01T00:00:00",
+                          "finMesure": "2024-01-31T23:59:59",
+                          "quantite": 2876,
+                          "codeNature": "REEL",
+                          "libelleNature": "Index réel",
+                          "codeStatut": "VALIDE",
+                          "libelleStatut": "Validé contrôleur"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

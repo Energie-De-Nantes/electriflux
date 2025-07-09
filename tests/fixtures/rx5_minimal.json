@@ -1,0 +1,125 @@
+{
+  "header": {
+    "siDemandeur": "DEMANDEUR001",
+    "typeDestinataire": "FOURNISSEUR",
+    "idDestinataire": "FOURN001",
+    "codeFlux": "RX5",
+    "idDemande": "DEM123456",
+    "modePublication": "COMPLET",
+    "idPublication": "PUB789012",
+    "format": "JSON",
+    "publicationCrp": "CRP001"
+  },
+  "mesures": [
+    {
+      "idPrm": "12345678901234",
+      "periode": {
+        "dateDebut": "2024-01-01T00:00:00",
+        "dateFin": "2024-01-31T23:59:59"
+      },
+      "contexte": [
+        {
+          "etapeMetier": "RELEVE",
+          "idMotifReleve": "MOTIF001",
+          "libelleMotifReleve": "Relevé périodique",
+          "grandeur": [
+            {
+              "grandeurMetier": "ENERGIE_ACTIVE",
+              "grandeurPhysique": "ENERGIE",
+              "unite": "kWh",
+              "calendrier": [
+                {
+                  "codeGrille": "GRILLE001",
+                  "libelleGrille": "Grille standard",
+                  "codeCalendrier": "CAL001",
+                  "libelleCalendrier": "Calendrier Enedis",
+                  "classeTemporelle": [
+                    {
+                      "idClasseTemporelle": "HP",
+                      "libelleClasseTemporelle": "Heures Pleines",
+                      "quantite": [
+                        {
+                          "dateCreation": "2024-02-01T08:00:00",
+                          "dbtMesure": "2024-01-01T00:00:00",
+                          "finMesure": "2024-01-31T23:59:59",
+                          "quantite": 1234,
+                          "codeNature": "REEL",
+                          "libelleNature": "Réel",
+                          "codeStatut": "VALIDE",
+                          "libelleStatut": "Validé"
+                        }
+                      ]
+                    },
+                    {
+                      "idClasseTemporelle": "HC",
+                      "libelleClasseTemporelle": "Heures Creuses",
+                      "quantite": [
+                        {
+                          "dateCreation": "2024-02-01T08:00:00",
+                          "dbtMesure": "2024-01-01T00:00:00",
+                          "finMesure": "2024-01-31T23:59:59",
+                          "quantite": 5678,
+                          "codeNature": "REEL",
+                          "libelleNature": "Réel",
+                          "codeStatut": "VALIDE",
+                          "libelleStatut": "Validé"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "idPrm": "98765432109876",
+      "periode": {
+        "dateDebut": "2024-01-01T00:00:00",
+        "dateFin": "2024-01-31T23:59:59"
+      },
+      "contexte": [
+        {
+          "etapeMetier": "RELEVE",
+          "idMotifReleve": "MOTIF002",
+          "libelleMotifReleve": "Relevé exceptionnel",
+          "grandeur": [
+            {
+              "grandeurMetier": "ENERGIE_ACTIVE",
+              "grandeurPhysique": "ENERGIE",
+              "unite": "kWh",
+              "calendrier": [
+                {
+                  "codeGrille": "GRILLE002",
+                  "libelleGrille": "Grille spéciale",
+                  "codeCalendrier": "CAL002",
+                  "libelleCalendrier": "Calendrier Spécial",
+                  "classeTemporelle": [
+                    {
+                      "idClasseTemporelle": "BASE",
+                      "libelleClasseTemporelle": "Base",
+                      "quantite": [
+                        {
+                          "dateCreation": "2024-02-01T08:00:00",
+                          "dbtMesure": "2024-01-01T00:00:00",
+                          "finMesure": "2024-01-31T23:59:59",
+                          "quantite": 9876,
+                          "codeNature": "REEL",
+                          "libelleNature": "Réel",
+                          "codeStatut": "VALIDE",
+                          "libelleStatut": "Validé"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
