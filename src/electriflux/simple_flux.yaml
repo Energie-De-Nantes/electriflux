@@ -157,3 +157,53 @@ R151:
       child_path: 'Donnees_Releve/Classe_Temporelle_Distributeur'
       id_field: 'Id_Classe_Temporelle'
       value_field: 'Valeur'
+
+R15_ACC:
+  row_level: './/PRM'
+  metadata_fields:
+    Unité: 'En_Tete_Flux/Unite_Mesure_Index'
+  data_fields:
+    pdl: 'Id_PRM'
+    Date_Releve: 'Donnees_Releve/Date_Releve'
+    Id_Calendrier: 'Donnees_Releve/Id_Calendrier'
+    Id_Calendrier_Distributeur: 'Donnees_Releve/Id_Calendrier_Distributeur'
+    Ref_Situation_Contractuelle: 'Donnees_Releve/Ref_Situation_Contractuelle'
+    Type_Compteur: 'Donnees_Releve/Type_Compteur'
+    Motif_Releve: 'Donnees_Releve/Motif_Releve'
+    Id_Affaire: 'Donnees_Releve/Id_Affaire'
+    Nature_Index: 'Donnees_Releve/Nature_Index'
+    Statut_Releve: 'Donnees_Releve/Statut_Releve'
+    Autoconsommation_Collective: 'Donnees_Releve/Autoconsommation_Collective'
+  nested_fields:
+    # Classe 3 - Énergie active autoproduite
+    - prefix: 'EA_Autoproduite_'
+      child_path: 'Donnees_Releve/Classe_Temporelle_Distributeur'
+      id_field: 'Id_Classe_Temporelle'
+      value_field: 'Valeur'
+      conditions:
+        - xpath: 'Classe_Mesure'
+          value: '3'
+    # Classe 4 - Énergie active alloproduite
+    - prefix: 'EA_Alloproduite_'
+      child_path: 'Donnees_Releve/Classe_Temporelle_Distributeur'
+      id_field: 'Id_Classe_Temporelle'
+      value_field: 'Valeur'
+      conditions:
+        - xpath: 'Classe_Mesure'
+          value: '4'
+    # Classe 5 - Énergie active autoconsommée
+    - prefix: 'EA_Autoconsommee_'
+      child_path: 'Donnees_Releve/Classe_Temporelle_Distributeur'
+      id_field: 'Id_Classe_Temporelle'
+      value_field: 'Valeur'
+      conditions:
+        - xpath: 'Classe_Mesure'
+          value: '5'
+    # Classe 6 - Énergie active en surplus
+    - prefix: 'EA_Surplus_'
+      child_path: 'Donnees_Releve/Classe_Temporelle_Distributeur'
+      id_field: 'Id_Classe_Temporelle'
+      value_field: 'Valeur'
+      conditions:
+        - xpath: 'Classe_Mesure'
+          value: '6'
